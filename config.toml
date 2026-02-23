@@ -28,5 +28,6 @@ name = "id.noa.re"
 namespace = "idelephant"
 image = "nresare/idelephant:latest"
 args = ["-c", "/config/idelephant.toml"]
+external_secrets = ["/db-password", "/email-password"]
 [websites.config]
 "/config/idelephant.toml" = "idelephant/idelephant.toml"
