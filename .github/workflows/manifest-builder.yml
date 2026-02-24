@@ -22,12 +22,13 @@ jobs:
           path: target
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v3
+        uses: astral-sh/setup-uv@v7
 
       - name: Install and run manifest-builder
         run: |-
+          uv venv
           uv pip install --upgrade --extra-index-url https://nresare.github.io/manifest-builder manifest-builder
-          manifest-builder -c config -o target --create-commit
+          uv run manifest-builder -c config -o target --create-commit
 
       - name: Configure git
         run: |
