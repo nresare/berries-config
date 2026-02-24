@@ -1,11 +1,11 @@
 # App configurations reference releases defined in helmfile.yaml.
 # The release provides the chart source (repo, chart name, version).
 
-#[[helms]]
-#namespace = "cert-manager"
-#release = "cert-manager"
-#values = ["cert-manager/values.yaml"]
-#
+[[helms]]
+namespace = "cert-manager"
+release = "cert-manager"
+values = ["cert-manager/values.yaml"]
+
 [[helms]]
 namespace = "surrealdb"
 release = "surrealdb"
