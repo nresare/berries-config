@@ -13,6 +13,7 @@ jobs:
       - name: Checkout berries-config
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.BERRIES_MANIFESTS_TOKEN }}
           path: config
 
       - name: Checkout berries-manifests
@@ -36,9 +37,7 @@ jobs:
           git config --global user.name "GitHub Action"
 
       - name: Push to berries-manifests
-        env:
-          GITHUB_TOKEN: ${{ secrets.BERRIES_MANIFESTS_TOKEN }}
         run: |
           cd target
-          git push https://${{ secrets.BERRIES_MANIFESTS_TOKEN }}@github.com/nresare/berries-manifests.git
+          git push
 
