@@ -1,0 +1,43 @@
+name: Build Manifests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout berries-config
+        uses: actions/checkout@v4
+        with:
+          path: config
+
+      - name: Checkout berries-manifests
+        uses: actions/checkout@v4
+        with:
+          repository: nresare/berries-manifests
+          path: target
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install and run manifest-builder
+        run: |-
+          uv pip install --upgrade --extra-index-url https://nresare.github.io/manifest-builder manifest-builder
+          manifest-builder -c config -o target --create-commit
+
+      - name: Configure git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+      - name: Push to berries-manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.BERRIES_MANIFESTS_TOKEN }}
+        run: |
+          cd target
+          git push https://${{ secrets.BERRIES_MANIFESTS_TOKEN }}@github.com/nresare/berries-manifests.git
+
