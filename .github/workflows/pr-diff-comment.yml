@@ -1,0 +1,67 @@
+name: PR Diff Comment
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  diff-comment:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout berries-config
+        uses: actions/checkout@v6
+        with:
+          path: config
+
+      - name: Checkout berries-manifests
+        uses: actions/checkout@v6
+        with:
+          token: ${{ secrets.BERRIES_MANIFESTS_TOKEN }}
+          repository: nresare/berries-manifests
+          path: target
+          ref: main
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+
+      - name: Configure git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+      - name: Install and run manifest-builder
+        run: |-
+          uv venv
+          uv pip install --upgrade --extra-index-url https://nresare.github.io/manifest-builder manifest-builder
+          uv run manifest-builder -c config -o target
+
+      - name: Generate diff output
+        run: |
+          cd target
+          echo "# Manifest Diff" > diff_output.txt
+          echo "" >> diff_output.txt
+          echo "## git diff --stat" >> diff_output.txt
+          echo "\`\`\`" >> diff_output.txt
+          git diff --stat >> diff_output.txt
+          echo "\`\`\`" >> diff_output.txt
+          echo "" >> diff_output.txt
+          echo "## git diff" >> diff_output.txt
+          echo "\`\`\`diff" >> diff_output.txt
+          git diff >> diff_output.txt
+          echo "\`\`\`" >> diff_output.txt
+
+      - name: Post diff as comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const diffOutput = fs.readFileSync('target/diff_output.txt', 'utf8');
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: diffOutput
+            });
