@@ -1,37 +1,42 @@
 # App configurations reference releases defined in helmfile.yaml.
 # The release provides the chart source (repo, chart name, version).
 
-[[helms]]
+[[helm]]
 namespace = "cert-manager"
 release = "cert-manager"
 values = ["cert-manager/values.yaml"]
 extra-resources = "cert-manager/extra"
 
-[[helms]]
+[[simple]]
+namespace = "acme-dns"
+copy-from = "acme-dns/manifests"
+[[simple.config]]
+"/config/config.cfg" = "acme-dns/config.cfg"
+
+[[helm]]
 namespace = "surrealdb"
 release = "surrealdb"
 values = ["surrealdb/values.yaml"]
 
-[[websites]]
+[[website]]
 name = "zq.lu"
 namespace = "web"
-hugo_repo = "https://github.com/nresare/zq.lu"
+hugo-repo = "https://github.com/nresare/zq.lu"
 
-[[websites]]
+[[website]]
 name = "noa.re"
 namespace = "web"
-hugo_repo = "https://github.com/nresare/noa.re"
-extra_hostnames = "nadia.resare.com"
+hugo-repo = "https://github.com/nresare/noa.re"
+extra-hostnames = "nadia.resare.com"
 
-
-[[websites]]
+[[website]]
 name = "id.noa.re"
 namespace = "idelephant"
 image = "nresare/idelephant:latest"
 args = ["-c", "/config/idelephant.toml"]
-external_secrets = [
+external-secrets = [
     "/db-password",
     "/email-password",
 ]
-[websites.config]
+[website.config]
 "/config/idelephant.toml" = "idelephant/idelephant.toml"
