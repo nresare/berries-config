@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acme-dns
+  labels:
+    app: acme-dns
+spec:
+  # since only a single instance can open the db, this needs to be 1
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: acme-dns
+  template:
+    metadata:
+      labels:
+        app: acme-dns
+    spec:
+      volumes:
+        - name: db
+          persistentVolumeClaim:
+            claimName: acme-dns
+        - name: config
+          configMap:
+            name: acme-dns
+      initContainers:
+        - name: fix-db-permissions
+          image: alpine:3.22.1
+          command:
+            - sh
+            - -c
+            - "mkdir -p /db/acme-dns && chown -R 65532:65532 /db/acme-dns"
+          volumeMounts:
+            - mountPath: /db
+              name: db
+      containers:
+        - name: acme-dns
+          image: nresare/acme-dns:v1.1-distroless
+          volumeMounts:
+            - mountPath: /db
+              name: db
+            - mountPath: /etc/acme-dns
+              name: config
+          ports:
+            - name: web
+              containerPort: 1080
+              protocol: TCP
+            - name: dns-tcp
+              containerPort: 1053
+              protocol: TCP
+            - name: dns
+              containerPort: 1053
+              protocol: UDP
