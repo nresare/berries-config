@@ -23,7 +23,7 @@ spec:
             claimName: acme-dns
         - name: config
           configMap:
-            name: acme-dns
+            name: acme-dns-config
       initContainers:
         - name: fix-db-permissions
           image: alpine:3.22.1
