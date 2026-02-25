@@ -2,6 +2,8 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
+  annotations:
+    noa-was-here: yup
 spec:
   acme:
     email: noa@resare.com
