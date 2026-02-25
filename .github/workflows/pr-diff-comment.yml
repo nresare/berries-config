@@ -26,7 +26,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v7
         with:
-          cache: false
+          enable-cache: false
 
       - name: Configure git
         run: |
