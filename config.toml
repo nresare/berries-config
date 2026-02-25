@@ -5,6 +5,7 @@
 namespace = "cert-manager"
 release = "cert-manager"
 values = ["cert-manager/values.yaml"]
+extra-resources = "cert-manager/extra"
 
 [[helms]]
 namespace = "surrealdb"
