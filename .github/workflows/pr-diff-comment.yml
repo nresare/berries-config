@@ -45,19 +45,20 @@ jobs:
       - name: Generate diff output
         run: |
           cd target
-          if git diff --quiet; then
+          git add .
+          if git diff --cached --quiet; then
             echo "The output to berries-manifests is identical before and after this PR" > diff_output.txt
           else
             echo "This PR would cause the following change" > diff_output.txt
             echo "" >> diff_output.txt
             echo "#### git diff --stat" >> diff_output.txt
             echo "\`\`\`" >> diff_output.txt
-            git diff --stat >> diff_output.txt
+            git diff --cached --stat >> diff_output.txt
             echo "\`\`\`" >> diff_output.txt
             echo "" >> diff_output.txt
             echo "#### git diff" >> diff_output.txt
             echo "\`\`\`diff" >> diff_output.txt
-            git diff >> diff_output.txt
+            git diff --cached >> diff_output.txt
             echo "\`\`\`" >> diff_output.txt
           fi
 
