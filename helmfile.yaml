@@ -7,7 +7,7 @@ repositories:
 releases:
   - name: cert-manager
     chart: jetstack/cert-manager
-    version: v1.18.2
+    version: v1.19.4
   - name: surrealdb
     chart: surrealdb/surrealdb
     version: 0.4.0
