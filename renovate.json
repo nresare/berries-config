@@ -7,7 +7,7 @@
     {
       "customType": "jsonata",
       "fileFormat": "toml",
-      "managerFilePatterns": ["^images\\.toml$"],
+      "managerFilePatterns": ["images.toml"],
       "matchStrings": ["$.*.{ \"depName\":repo,\"currentValue\":version,\"datasource\":\"docker\",\"versioning\":\"semver-coerced\"}"]
     }
   ]
