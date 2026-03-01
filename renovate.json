@@ -4,6 +4,8 @@
     "config:recommended"
   ],
   "helm-values": {
-    "fileMatch": ["^/images\\.yaml$"]
+    "managerFilePatterns": [
+      "/^/images\\.yaml$/"
+    ]
   }
 }
