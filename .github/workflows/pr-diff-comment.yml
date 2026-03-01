@@ -91,7 +91,7 @@ jobs:
 
       - name: Upload diff artifact (if too large)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: diff
           path: target/full_diff.patch
