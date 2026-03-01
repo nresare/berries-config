@@ -23,6 +23,10 @@ namespace = "teleport"
 release = "teleport-kube-agent"
 values = ["teleport/agent-values.yaml"]
 
+[[helm]]
+namespace = "envoy-gateway-system"
+release = "envoy-gateway"
+
 [[website]]
 name = "zq.lu"
 namespace = "web"

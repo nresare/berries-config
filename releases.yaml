@@ -5,6 +5,8 @@ repositories:
     url: https://helm.surrealdb.com
   - name: teleport
     url: https://charts.releases.teleport.dev
+  - name: envoyproxy
+    url: oci://docker.io/envoyproxy/gateway-helm
 
 releases:
   - name: cert-manager
@@ -19,3 +21,6 @@ releases:
   - name: teleport-kube-agent
     chart: teleport/teleport-kube-agent
     version: 18.7.1
+  - name: envoy-gateway
+    chart: envoyproxy
+    version: v1.3.3
