@@ -3,4 +3,7 @@
   "extends": [
     "config:recommended"
   ]
+  "helm-values": {
+    "fileMatch": ["^/images\\.yaml$"]
+  }
 }
