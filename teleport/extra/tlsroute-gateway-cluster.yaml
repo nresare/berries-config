@@ -1,0 +1,15 @@
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: TLSRoute
+metadata:
+  name: teleport-cluster
+spec:
+  parentRefs:
+  - name: teleport-cluster
+  hostnames:
+  - "teleport.noa.re"
+  - "*.teleport.noa.re"
+  rules:
+  - backendRefs:
+    - name: teleport-cluster
+      port: 443
+

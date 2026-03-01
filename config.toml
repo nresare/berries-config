@@ -16,6 +16,7 @@ values = ["surrealdb/values.yaml"]
 namespace = "teleport-cluster"
 release = "teleport-cluster"
 values = ["teleport/cluster-values.yaml"]
+extra-resources = "teleport/extra"
 
 [[website]]
 name = "zq.lu"
