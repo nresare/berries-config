@@ -4,7 +4,7 @@ version = "2.47.2"
 
 [hugo]
 repo = "floryn90/hugo"
-version = "0.155.3-alpine"
+version = "0.157.0"
 
 [static-web-server]
 repo = "ghcr.io/static-web-server/static-web-server"
