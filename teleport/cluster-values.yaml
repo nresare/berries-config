@@ -1,0 +1,11 @@
+clusterName: teleport.noa.re
+service:
+  type: NodePort
+ingress:
+  useExisting: true
+highAvailability:
+  requireAntiAffinity: true
+  certManager:
+    enabled: true
+    issuerName: letsencrypt
+    issuerKind: ClusterIssuer

@@ -7,16 +7,15 @@ release = "cert-manager"
 values = ["cert-manager/values.yaml"]
 extra-resources = "cert-manager/extra"
 
-[[simple]]
-namespace = "acme-dns"
-copy-from = "acme-dns/manifests"
-[[simple.config]]
-"/config/config.cfg" = "acme-dns/config.cfg"
-
 [[helm]]
 namespace = "surrealdb"
 release = "surrealdb"
 values = ["surrealdb/values.yaml"]
+
+[[helm]]
+namespace = "teleport-cluster"
+release = "teleport-cluster"
+values = ["teleport/cluster-values.yaml"]
 
 [[website]]
 name = "zq.lu"
@@ -40,3 +39,9 @@ external-secrets = [
 ]
 [website.config]
 "/config/idelephant.toml" = "idelephant/idelephant.toml"
+
+[[simple]]
+namespace = "acme-dns"
+copy-from = "acme-dns/manifests"
+[[simple.config]]
+"/config/config.cfg" = "acme-dns/config.cfg"
