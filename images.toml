@@ -1,0 +1,11 @@
+[git]
+repo = "alpine/git"
+version = "2.47.2"
+
+[hugo]
+repo = "floryn90/hugo"
+version = "0.155.3-alpine"
+
+[static-web-server]
+repo = "ghcr.io/static-web-server/static-web-server"
+version = "2.36.1"
