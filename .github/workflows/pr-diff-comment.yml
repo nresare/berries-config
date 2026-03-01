@@ -59,6 +59,14 @@ jobs:
           # Store full diff separately for potential artifact upload
           git diff --cached > full_diff.patch
 
+      - name: Check diff file
+        run: |
+          echo "Size of full_diff.patch:"
+          ls -lh target/full_diff.patch || echo "File not found"
+          echo "First 100 bytes of full_diff.patch:"
+          head -c 100 target/full_diff.patch || echo "File is empty or doesn't exist"
+          echo ""
+
       - name: Post diff as comment
         uses: actions/github-script@v8
         with:
