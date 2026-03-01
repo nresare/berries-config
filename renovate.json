@@ -5,7 +5,7 @@
   ],
   "helm-values": {
     "managerFilePatterns": [
-      "/^/images\\.yaml$/"
+      "/^images\\.yaml$/"
     ]
   }
 }
