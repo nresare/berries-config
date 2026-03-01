@@ -26,6 +26,7 @@ values = ["teleport/agent-values.yaml"]
 [[helm]]
 namespace = "envoy-gateway-system"
 release = "envoy-gateway"
+extra-resources = "envoy-gateway/extra"
 
 [[website]]
 name = "zq.lu"
