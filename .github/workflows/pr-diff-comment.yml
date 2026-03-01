@@ -55,12 +55,9 @@ jobs:
             echo "\`\`\`" >> diff_output.txt
             git diff --cached --stat >> diff_output.txt
             echo "\`\`\`" >> diff_output.txt
-            echo "" >> diff_output.txt
-            echo "#### git diff" >> diff_output.txt
-            echo "\`\`\`diff" >> diff_output.txt
-            git diff --cached >> diff_output.txt
-            echo "\`\`\`" >> diff_output.txt
           fi
+          # Store full diff separately for potential artifact upload
+          git diff --cached > full_diff.patch
 
       - name: Post diff as comment
         uses: actions/github-script@v8
@@ -68,10 +65,34 @@ jobs:
           script: |
             const fs = require('fs');
             const diffOutput = fs.readFileSync('target/diff_output.txt', 'utf8');
+            const fullDiff = fs.readFileSync('target/full_diff.patch', 'utf8');
+
+            // GitHub comment limit is 65536 characters
+            const maxCommentSize = 65536;
+            let commentBody = diffOutput;
+
+            // Only add diff section if there are actual changes
+            if (fullDiff.trim().length > 0) {
+              // If full diff output would exceed the limit, prepare to use artifact
+              const fullDiffSize = diffOutput.length + fullDiff.length + 100;
+              if (fullDiffSize > maxCommentSize) {
+                commentBody += '\n\n⚠️ The full diff is too large for a comment. See the uploaded artifact `diff.patch` for the complete diff.';
+              } else {
+                commentBody += '\n\n#### git diff\n```diff\n' + fullDiff + '\n```';
+              }
+            }
 
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: diffOutput
+              body: commentBody
             });
+
+      - name: Upload diff artifact (if too large)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diff
+          path: target/full_diff.patch
+          if-no-files-found: ignore
