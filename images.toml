@@ -9,3 +9,11 @@ version = "0.157.0"
 [static-web-server]
 repo = "ghcr.io/static-web-server/static-web-server"
 version = "2.36.1"
+
+[acme-dns]
+repo = "nresare/acme-dns"
+version = "v1.1-distroless"
+
+[alpine]
+repo = "alpine"
+version = "3.22.1"
