@@ -17,6 +17,11 @@ namespace = "teleport-cluster"
 release = "teleport-cluster"
 values = ["teleport/cluster-values.yaml"]
 
+[[helm]]
+namespace = "teleport"
+release = "teleport-kube-agent"
+values = ["teleport/agent-values.yaml"]
+
 [[website]]
 name = "zq.lu"
 namespace = "web"
