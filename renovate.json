@@ -12,6 +12,6 @@
     }
   ],
   "helmfile": {
-    "managerFilePatterns": ["releases.toml"]
+    "managerFilePatterns": ["releases.yaml"]
   }
 }
