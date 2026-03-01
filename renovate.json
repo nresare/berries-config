@@ -10,5 +10,8 @@
       "managerFilePatterns": ["images.toml"],
       "matchStrings": ["$.*.{ \"depName\":repo,\"currentValue\":version,\"datasource\":\"docker\",\"versioning\":\"semver-coerced\"}"]
     }
-  ]
+  ],
+  "helmfile": {
+    "managerFilePatterns": ["releases.toml"]
+  }
 }
