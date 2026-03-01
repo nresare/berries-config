@@ -3,9 +3,12 @@
   "extends": [
     "config:recommended"
   ],
-  "helm-values": {
-    "managerFilePatterns": [
-      "/^images\\.yaml$/"
-    ]
-  }
+  "customManagers": [
+    {
+      "customType": "jsonata",
+      "fileFormat": "toml",
+      "managerFilePatterns": ["^image\\.toml$"],
+      "matchStrings": ["$.*.{ \"depName\":repo,\"currentValue\":version,\"datasource\":\"docker\",\"versioning\":\"semver-coerced\"}"]
+    }
+  ]
 }
