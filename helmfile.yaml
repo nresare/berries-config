@@ -3,6 +3,8 @@ repositories:
     url: https://charts.jetstack.io
   - name: surrealdb
     url: https://helm.surrealdb.com
+  - name: teleport
+    url: https://charts.releases.teleport.dev
 
 releases:
   - name: cert-manager
@@ -11,3 +13,6 @@ releases:
   - name: surrealdb
     chart: surrealdb/surrealdb
     version: 0.4.0
+  - name: teleport-cluster
+    chart: teleport/teleport-cluster
+    version: 18.2.2
