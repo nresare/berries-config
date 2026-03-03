@@ -16,3 +16,4 @@ spec:
       group: ""
       kind: Service
       port: 443
+      weight: 1
