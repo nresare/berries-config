@@ -3,7 +3,7 @@ kind: ClusterIssuer
 metadata:
   name: letsencrypt
   annotations:
-    noa-was-here: yup
+    noa-was-here: and ben too
 spec:
   acme:
     email: noa@resare.com
