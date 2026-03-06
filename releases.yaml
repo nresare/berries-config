@@ -20,7 +20,7 @@ releases:
     version: 18.7.2
   - name: teleport-kube-agent
     chart: teleport/teleport-kube-agent
-    version: 18.7.1
+    version: 18.7.2
   - name: envoy-gateway
     chart: envoyproxy
     version: v1.7.0
