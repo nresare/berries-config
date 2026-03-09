@@ -6,7 +6,8 @@ repositories:
   - name: teleport
     url: https://charts.releases.teleport.dev
   - name: envoyproxy
-    url: oci://docker.io/envoyproxy/gateway-helm
+    url: docker.io/envoyproxy/gateway-helm
+    oci: true
 
 releases:
   - name: cert-manager
