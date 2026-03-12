@@ -6,7 +6,7 @@ repositories:
   - name: teleport
     url: https://charts.releases.teleport.dev
   - name: envoyproxy
-    url: docker.io/envoyproxy/gateway-helm
+    url: docker.io/envoyproxy
     oci: true
 
 releases:
@@ -23,5 +23,5 @@ releases:
     chart: teleport/teleport-kube-agent
     version: 18.7.3
   - name: envoy-gateway
-    chart: envoyproxy
+    chart: envoyproxy/gateway-helm
     version: v1.7.0
