@@ -24,4 +24,4 @@ releases:
     version: 18.7.3
   - name: envoy-gateway
     chart: envoyproxy/gateway-helm
-    version: v1.7.0
+    version: 1.7.1
