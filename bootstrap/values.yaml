@@ -1,0 +1,10 @@
+server:
+  service:
+    annotations:
+      teleport.dev/port: http
+      teleport.dev/name: argo
+    labels:
+      noa.re/discover: enabled
+configs:
+  params:
+    "server.insecure": true
