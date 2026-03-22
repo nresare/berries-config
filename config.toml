@@ -55,7 +55,6 @@ external-secrets = [
 name = "demo.resare.com"
 namespace = "demo"
 image = "nresare/oidc-client-demo:latest"
-args = ["-c", "/config/config.toml"]
 [website.config]
 "/config/config.toml" = "demo/config.toml"
 
