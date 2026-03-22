@@ -1,0 +1,11 @@
+# Application configuration for oidc-client-demo
+
+[app]
+secret_key = "F6CtWWwVLCXxgrchWjygTNzN"
+base_url = "https://demo.resare.com"
+
+[oidc]
+issuer = "http://id.noa.re"
+client_id = "oidc-client-demo"
+scopes = ["openid", "profile", "email"]
+
