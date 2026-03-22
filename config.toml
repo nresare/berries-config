@@ -51,6 +51,14 @@ external-secrets = [
 [website.config]
 "/config/idelephant.toml" = "idelephant/idelephant.toml"
 
+[[website]]
+name = "demo.resare.com"
+namespace = "demo"
+image = "nresare/oidc-client-demo:latest"
+args = ["-c", "/config/config.toml"]
+[website.config]
+"/config/config.toml" = "demo/config.toml"
+
 [[simple]]
 namespace = "acme-dns"
 copy-from = "acme-dns/manifests"

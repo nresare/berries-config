@@ -26,6 +26,8 @@ spec:
             name: acme-dns-config
       initContainers:
         - name: fix-db-permissions
+          securityContext:
+            allowPrivilegeEscalation: false
           image: {{alpine_image}}
           command:
             - sh
@@ -36,6 +38,8 @@ spec:
               name: db
       containers:
         - name: acme-dns
+          securityContext:
+            allowPrivilegeEscalation: false
           image: {{acme_dns_image}}
           volumeMounts:
             - mountPath: /db
