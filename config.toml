@@ -13,6 +13,11 @@ release = "surrealdb"
 values = ["surrealdb/values.yaml"]
 
 [[helm]]
+namespace = "surreal3"
+release = "surrealdb"
+values = ["surreal3/values.yaml"]
+
+[[helm]]
 namespace = "teleport-cluster"
 release = "teleport-cluster"
 values = ["teleport/cluster-values.yaml"]
