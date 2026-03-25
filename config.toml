@@ -13,6 +13,11 @@ release = "surrealdb"
 values = ["surrealdb/values.yaml"]
 
 [[helm]]
+namespace = "surreal3"
+release = "surrealdb"
+values = ["surreal3/values.yaml"]
+
+[[helm]]
 namespace = "teleport-cluster"
 release = "teleport-cluster"
 values = ["teleport/cluster-values.yaml"]
@@ -42,7 +47,7 @@ extra-hostnames = "nadia.resare.com"
 [[website]]
 name = "id.noa.re"
 namespace = "idelephant"
-image = "nresare/idelephant:latest"
+image = "nresare/idelephant:v0.2.0"
 args = ["-c", "/config/idelephant.toml"]
 external-secrets = [
     "/db-password",
