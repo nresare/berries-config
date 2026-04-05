@@ -1,8 +1,0 @@
-image:
-  tag: v3.0.4
-persistence:
-  enabled: true
-strategy:
-  type: Recreate
-surrealdb:
-  path: surrealkv://data/db
