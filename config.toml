@@ -10,13 +10,8 @@ extra-resources = "cert-manager/extra"
 [[helm]]
 namespace = "surrealdb"
 release = "surrealdb"
+init = "surrealdb/fix-permissions.sh"
 values = ["surrealdb/values.yaml"]
-
-[[helm]]
-namespace = "surreal3"
-release = "surrealdb"
-init = "surreal3/fix-permissions.sh"
-values = ["surreal3/values.yaml"]
 
 [[helm]]
 namespace = "teleport-cluster"

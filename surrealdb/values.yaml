@@ -1,3 +1,5 @@
+image:
+  tag: v3.0.5
 persistence:
   enabled: true
 strategy:
