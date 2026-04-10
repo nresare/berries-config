@@ -60,7 +60,7 @@ jobs:
           git diff --cached > full_diff.patch
 
       - name: Post diff as comment
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
