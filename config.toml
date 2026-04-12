@@ -44,7 +44,7 @@ extra-hostnames = "nadia.resare.com"
 name = "id.noa.re"
 namespace = "idelephant"
 replicas = 1
-image = "nresare/idelephant:v0.2.2"
+image = "packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.18-ge248ff2"
 args = ["-c", "/config/idelephant.toml"]
 external-secrets = [
     "/db-password",
