@@ -22,7 +22,7 @@ spec:
         - name: idmouse
           securityContext:
             allowPrivilegeEscalation: false
-          image: packages.buildkite.com/nresare/idmouse/idmouse:0.1.0-616fdc26
+          image: packages.buildkite.com/nresare/idmouse/idmouse:0.1.0-73a129b9
           ports:
             - name: http
               containerPort: 8080
