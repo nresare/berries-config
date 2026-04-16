@@ -37,7 +37,7 @@ jobs:
       - name: Install and run manifest-builder
         run: |-
           uv venv
-          uv pip install --upgrade --extra-index-url https://packages.buildkite.com/nresare/python/pypi/simple
+          uv pip install --upgrade --extra-index-url https://packages.buildkite.com/nresare/python/pypi/simple manifest-builder
           uv run manifest-builder -c config -o target --create-commit
 
       - name: Push to berries-manifests

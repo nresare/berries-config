@@ -39,7 +39,7 @@ jobs:
       - name: Install and run manifest-builder
         run: |-
           uv venv
-          uv pip install --upgrade --extra-index-url https://nresare.github.io/manifest-builder manifest-builder
+          uv pip install --upgrade --extra-index-url https://packages.buildkite.com/nresare/python/pypi/simple manifest-builder
           uv run manifest-builder -c config -o target
 
       - name: Generate diff output
