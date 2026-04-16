@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idmouse
+  labels:
+    app: idmouse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: idmouse
+  template:
+    metadata:
+      labels:
+        app: idmouse
+    spec:
+      containers:
+        - name: idmouse
+          securityContext:
+            allowPrivilegeEscalation: false
+          image: packages.buildkite.com/nresare/idmouse/idmouse:0.1.0-616fdc26
+          ports:
+            - name: http
+              containerPort: 8080

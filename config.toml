@@ -65,3 +65,9 @@ namespace = "acme-dns"
 copy-from = "acme-dns/manifests"
 [[simple.config]]
 "/config/config.cfg" = "acme-dns/config.cfg"
+
+[[simple]]
+namespace = "idmouse"
+copy-from = "idmouse/manifests"
+[[simple.config]]
+"/config/idmouse.toml" = "idmouse/idmouse.toml"
