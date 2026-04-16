@@ -8,13 +8,12 @@ issuer = "https://kubernetes.default.svc"
 [[mapping]]
 name = "idelephant"
 allowed_subjects = ["system:serviceaccount:idelephant:idelephant"]
-additional_claims = {
-    ns = "default",
-    db = "idelephant",
-    sub = "idelephant",
-    ac = "token_name",
-    id = "idelephant",
-}
+[mappnig.additional_claims]
+ns = "default"
+db = "idelephant"
+sub = "idelephant"
+ac = "token_name"
+id = "idelephant"
 
 [[mapping]]
 name = "some_other_mapping"
