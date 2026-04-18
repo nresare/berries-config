@@ -46,6 +46,7 @@ namespace = "idelephant"
 replicas = 1
 image = "packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.19-g85d4992"
 args = ["-c", "/config/idelephant.toml"]
+custom-token-audience = "idmouse"
 external-secrets = [
     "/db-password",
     "/email-password",
