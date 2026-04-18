@@ -6,4 +6,6 @@ strategy:
   type: Recreate
 surrealdb:
   path: surrealkv://data/db
-  unauthenticated: true
+podExtraEnv:
+  - name: SURREAL_CAPS_ALLOW_NET
+    value: idmouse.idmouse.svc:80
