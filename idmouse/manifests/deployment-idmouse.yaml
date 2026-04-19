@@ -14,10 +14,6 @@ spec:
       labels:
         app: idmouse
     spec:
-      volumes:
-        - name: config
-          configMap:
-            name: idmouse-config
       containers:
         - name: idmouse
           securityContext:
@@ -26,6 +22,3 @@ spec:
           ports:
             - name: http
               containerPort: 8080
-          volumeMounts:
-            - mountPath: /config
-              name: config

@@ -65,7 +65,7 @@ image = "nresare/oidc-client-demo:latest"
 namespace = "acme-dns"
 copy-from = "acme-dns/manifests"
 [[simple.config]]
-"/config/config.cfg" = "acme-dns/config.cfg"
+"/etc/acme-dns/config.cfg" = "acme-dns/config.cfg"
 
 [[simple]]
 namespace = "idmouse"
