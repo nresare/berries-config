@@ -21,9 +21,6 @@ spec:
         - name: db
           persistentVolumeClaim:
             claimName: acme-dns
-        - name: config
-          configMap:
-            name: acme-dns-config
       initContainers:
         - name: fix-db-permissions
           securityContext:
@@ -44,8 +41,6 @@ spec:
           volumeMounts:
             - mountPath: /db
               name: db
-            - mountPath: /etc/acme-dns
-              name: config
           ports:
             - name: web
               containerPort: 1080
