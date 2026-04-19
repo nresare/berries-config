@@ -1,5 +1,6 @@
 bind_address = "0.0.0.0:8080"
 origin = "http://idmouse.idmouse.svc"
+signing_key_storage = "kubernetes_secret"
 
 [authentication]
 audience = "idmouse"
@@ -7,7 +8,7 @@ issuer = "https://kubernetes.default.svc"
 
 [[mapping]]
 name = "idelephant"
-allowed_subjects = ["system:serviceaccount:idelephant:idelephant", "system:serviceaccount:idelephant:default"]
+allowed_subjects = ["system:serviceaccount:idelephant:default"]
 [mapping.additional_claims]
 ns = "default"
 db = "idelephant"
