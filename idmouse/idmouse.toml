@@ -8,7 +8,7 @@ issuer = "https://kubernetes.default.svc"
 [[mapping]]
 name = "idelephant"
 allowed_subjects = ["system:serviceaccount:idelephant:idelephant", "system:serviceaccount:idelephant:default"]
-[[mappnig.additional_claims]]
+[mapping.additional_claims]
 ns = "default"
 db = "idelephant"
 ac = "idelephant"
