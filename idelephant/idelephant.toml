@@ -15,4 +15,4 @@ password_file = "/db-password/password"
 
 [persistence.idmouse]
 url = "http://idmouse.idmouse.svc/token/idelephant"
-bearer_token_file = "/var/run/secrets/tokens/idmouse"
+token_path = "/var/run/secrets/tokens/idmouse"
