@@ -6,6 +6,7 @@ strategy:
   type: Recreate
 surrealdb:
   path: surrealkv://data/db
+  log: debug
 podExtraEnv:
   - name: SURREAL_CAPS_ALLOW_NET
     value: idmouse.idmouse.svc
