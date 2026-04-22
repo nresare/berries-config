@@ -18,7 +18,7 @@ releases:
     version: 0.4.0
   - name: teleport-cluster
     chart: teleport/teleport-cluster
-    version: 18.7.4
+    version: 18.7.5
   - name: teleport-kube-agent
     chart: teleport/teleport-kube-agent
     version: 18.7.5
