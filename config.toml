@@ -61,6 +61,15 @@ image = "nresare/oidc-client-demo:latest"
 [website.config]
 "/config/config.toml" = "demo/config.toml"
 
+[[website]]
+name = "idcat.noa.re"
+namespace = "idcat"
+replicas = 2
+image = "packages.buildkite.com/nresare/idcat/idcat:0.1.0-ed2d425c"
+external-secrets = ["/app-keys"]
+[website.config]
+"/config/idcat.toml" = "idcat/idcat.toml"
+
 [[simple]]
 namespace = "acme-dns"
 copy-from = "acme-dns/manifests"
