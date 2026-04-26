@@ -1,10 +1,27 @@
 steps:
-  - label: ":buildkite: Request pull metadata"
+  - label: ":buildkite: Comment on pull request"
     command: |
       set -euo pipefail
 
+      if [[ "$${BUILDKITE_PULL_REQUEST:-false}" == "false" ]]; then
+        echo "Skipping PR comment because this build was not triggered by a pull request."
+        exit 0
+      fi
+
       token=$(buildkite-agent oidc request-token --audience idcat.noa.re)
+      pr_number="$${BUILDKITE_PULL_REQUEST}"
+
+      payload=$$(jq --null-input \
+        --arg body "Buildkite invoked this pipeline for pull request #$$pr_number: $${BUILDKITE_BUILD_URL}" \
+        '{
+          body: $$body
+        }')
 
       curl --fail --show-error --silent \
-        --header "Authorization: Bearer ${token}" \
-        https://idcat.noa.re/proxy/repos/nresare/berries-config/pulls
+        --request POST \
+        --header "Authorization: Bearer $$token" \
+        --header "Accept: application/vnd.github+json" \
+        --header "X-GitHub-Api-Version: 2026-03-10" \
+        --header "Content-Type: application/json" \
+        --data "$$payload" \
+        "https://idcat.noa.re/proxy/repos/nresare/berries-config/issues/$$pr_number/comments"
