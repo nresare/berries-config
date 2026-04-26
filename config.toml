@@ -66,6 +66,7 @@ name = "idcat.noa.re"
 namespace = "idcat"
 replicas = 2
 image = "packages.buildkite.com/nresare/idcat/idcat:0.1.0-ed2d425c"
+args = ["--debug"]
 external-secrets = ["/app-keys"]
 [website.config]
 "/config/idcat.toml" = "idcat/idcat.toml"
