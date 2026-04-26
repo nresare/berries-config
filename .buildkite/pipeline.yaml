@@ -1,0 +1,10 @@
+steps:
+  - label: ":buildkite: Request pull metadata"
+    command: |
+      set -euo pipefail
+
+      token=$(buildkite-agent oidc request-token --audience idcat.noa.re)
+
+      curl --fail --show-error --silent \
+        --header "Authorization: Bearer ${token}" \
+        https://idcat.noa.re/proxy/repos/nresare/berries-config/pulls
