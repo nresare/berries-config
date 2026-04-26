@@ -65,7 +65,7 @@ image = "nresare/oidc-client-demo:latest"
 name = "idcat.noa.re"
 namespace = "idcat"
 replicas = 2
-image = "packages.buildkite.com/nresare/idcat/idcat:0.1.0-ed2d425c"
+image = "packages.buildkite.com/nresare/idcat/idcat:0.1.0-cbc3d1cf"
 args = ["--debug"]
 external-secrets = ["/app-keys"]
 [website.config]
