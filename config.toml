@@ -57,7 +57,7 @@ external-secrets = [
 [[website]]
 name = "demo.resare.com"
 namespace = "demo"
-image = "nresare/oidc-client-demo:latest"
+image = "packages.buildkite.com/nresare/oidc-client-demo/oidc-client-demo:0.1.0-3b20df74"
 [website.config]
 "/config/config.toml" = "demo/config.toml"
 
@@ -65,7 +65,7 @@ image = "nresare/oidc-client-demo:latest"
 name = "idcat.noa.re"
 namespace = "idcat"
 replicas = 2
-image = "packages.buildkite.com/nresare/idcat/idcat:0.1.0-cbc3d1cf"
+image = "packages.buildkite.com/nresare/idcat/idcat:0.1.0-426f845b"
 args = ["--debug"]
 external-secrets = ["/app-keys"]
 [website.config]
