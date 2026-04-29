@@ -6,7 +6,11 @@ private_key_directory = "/app-keys"
 audience = "idcat.noa.re"
 issuer = "https://agent.buildkite.com"
 
-[[installation]]
-required_claims = {organization_slug="nresare", pipeline_slug="berries-config"}
-repo = "nresare/berries-config"
+[[github_app]]
+name = "nresare-buildsystem"
+app_id = 3511383
 secret_key = "nresare-buildsystem.key"
+
+[[installation]]
+github_app = "nresare-buildsystem"
+required_claims = {organization_slug="nresare", pipeline_slug="berries-config"}
