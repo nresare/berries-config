@@ -57,6 +57,7 @@ external-secrets = [
 [[website]]
 name = "demo.resare.com"
 namespace = "demo"
+args = ["-c", "/config/config.toml"]
 image = "packages.buildkite.com/nresare/oidc-client-demo/oidc-client-demo:0.1.0-f17a7e9f"
 [website.config]
 "/config/config.toml" = "demo/config.toml"
