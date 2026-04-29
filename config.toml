@@ -72,14 +72,14 @@ external-secrets = ["/app-keys"]
 [website.config]
 "/config/idcat.toml" = "idcat/idcat.toml"
 
-[[simple]]
+[[copy]]
 namespace = "acme-dns"
-copy-from = "acme-dns/manifests"
-[[simple.config]]
+source = "acme-dns/manifests"
+[[copy.config]]
 "/etc/acme-dns/config.cfg" = "acme-dns/config.cfg"
 
-[[simple]]
+[[copy]]
 namespace = "idmouse"
-copy-from = "idmouse/manifests"
-[[simple.config]]
+source = "idmouse/manifests"
+[[copy.config]]
 "/config/idmouse.toml" = "idmouse/idmouse.toml"
