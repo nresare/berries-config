@@ -1,0 +1,14 @@
+bind_address = "0.0.0.0:8080"
+storage_directory = "/data"
+max_upload_bytes = 104857600
+
+[authentication]
+audience = "repo.noa.re"
+issuer = "https://kubernetes.default.svc"
+
+[[publisher]]
+name = "ci"
+projects = ["*"]
+
+[publisher.required_claims]
+sub = "system:serviceaccount:build:publisher"
