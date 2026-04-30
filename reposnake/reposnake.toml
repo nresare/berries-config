@@ -11,4 +11,4 @@ name = "ci"
 projects = ["*"]
 
 [publisher.required_claims]
-sub = "system:serviceaccount:build:publisher"
+sub = "system:serviceaccount:default:default"
