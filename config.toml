@@ -81,6 +81,14 @@ external-secrets = ["/app-keys"]
 [website.config]
 "/config/idcat.toml" = "idcat/idcat.toml"
 
+[[website]]
+name = "k8s.noa.re"
+namespace = "jwksproxy"
+replicas = 2
+image = "nresare/jwksproxy:latest"
+[website.config]
+"/config/jwksproxy.toml" = "jwksproxy/jwksproxy.toml"
+
 [[copy]]
 namespace = "acme-dns"
 source = "acme-dns/manifests"
