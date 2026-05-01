@@ -4,11 +4,9 @@ max_upload_bytes = 104857600
 
 [authentication]
 audience = "repo.noa.re"
-issuer = "https://kubernetes.default.svc"
+issuer = "https://agent.buildkite.com"
 
 [[publisher]]
 name = "ci"
 projects = ["*"]
-
-[publisher.required_claims]
-sub = "system:serviceaccount:default:default"
+required_claims = {organization_slug="nresare"}
