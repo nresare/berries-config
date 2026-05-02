@@ -1,1 +1,4 @@
 variant = "diffcomment"
+
+[[diffcomment]]
+target_repository = "git@github.com:nresare/berries-manifests"
