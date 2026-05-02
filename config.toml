@@ -95,8 +95,10 @@ source = "acme-dns/manifests"
 [[copy.config]]
 "/etc/acme-dns/config.cfg" = "acme-dns/config.cfg"
 
-[[copy]]
+[[simple]]
 namespace = "idmouse"
-source = "idmouse/manifests"
-[[copy.config]]
+extra-resources = "idmouse/extra"
+image = "nresare/idmouse:latest"
+k8s-role = "idmouse-signing-keys"
+[[simple.config]]
 "/config/idmouse.toml" = "idmouse/idmouse.toml"
