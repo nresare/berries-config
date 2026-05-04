@@ -14,7 +14,7 @@ issuer = "https://agent.buildkite.com"
 [[github-app]]
 name = "nresare-buildsystem"
 app-id = 3511383
-secret_key = "nresare-buildsystem.key"
+secret-key = "nresare-buildsystem.key"
 
 [[access-policy]]
 identity-provider = "buildkite"
