@@ -1,2 +1,2 @@
 variant = "manifest-builder"
-repo = "git@github.com:nresare/berries-manifests"
+repo = "https://github.com/nresare/berries-manifests"
