@@ -1,5 +1,4 @@
 bind-address = "0.0.0.0:8080"
-github-app-id = 3511383
 private-key-directory = "/app-keys"
 
 [[identity-provider]]
@@ -14,15 +13,15 @@ issuer = "https://agent.buildkite.com"
 
 [[github-app]]
 name = "nresare-buildsystem"
-app_id = 3511383
+app-id = 3511383
 secret_key = "nresare-buildsystem.key"
 
 [[access-policy]]
 identity-provider = "buildkite"
-github_app = "nresare-buildsystem"
-required_claims = {organization_slug="nresare", pipeline_slug="berries-config"}
+github-app = "nresare-buildsystem"
+required-claims = {organization_slug="nresare", pipeline_slug="berries-config"}
 
 [[access-policy]]
 identity-provider = "kubernetes"
-github_app = "nresare-buildsystem"
-required_claims = {sub="system:serviceaccount:default:default"}
+github-app = "nresare-buildsystem"
+required-claims = {sub="system:serviceaccount:default:default"}
