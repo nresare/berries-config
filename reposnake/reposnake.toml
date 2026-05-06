@@ -10,3 +10,10 @@ issuer = "https://agent.buildkite.com"
 name = "ci"
 projects = ["*"]
 required_claims = {organization_slug="nresare"}
+
+[[persistence]]
+uri = "ws://surrealdb.surrealdb:8000"
+
+[persistence.idmouse]
+url = "http://idmouse.idmouse.svc/token/idelephant"
+token_path = "/var/run/secrets/tokens/idmouse"
