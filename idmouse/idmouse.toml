@@ -14,3 +14,12 @@ ns = "default"
 db = "idelephant"
 ac = "idelephant"
 rl = ["Editor"]
+
+[[mapping]]
+name = "idelephant"
+allowed_subjects = ["system:serviceaccount:reposnake:default"]
+[mapping.additional_claims]
+ns = "default"
+db = "reposnake"
+ac = "reposnake"
+rl = ["Editor"]
