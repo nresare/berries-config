@@ -16,7 +16,7 @@ ac = "idelephant"
 rl = ["Editor"]
 
 [[mapping]]
-name = "idelephant"
+name = "reposnake"
 allowed_subjects = ["system:serviceaccount:reposnake:default"]
 [mapping.additional_claims]
 ns = "default"
