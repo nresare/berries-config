@@ -37,6 +37,7 @@ image = "nresare/reposnake:latest"
 args = ["-c", "/config/reposnake.toml"]
 config = { "/config/reposnake.toml" = "reposnake/reposnake.toml" }
 persistence = { "/data" = "2Gi" }
+custom-token-audience = "idmouse"
 
 [[website]]
 name = "zq.lu"
