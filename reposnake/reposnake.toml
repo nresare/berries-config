@@ -1,5 +1,5 @@
-bind_address = "0.0.0.0:8080"
-max_upload_bytes = 104857600
+bind-address = "0.0.0.0:8080"
+max-upload-bytes = 104857600
 
 [[identity-provider]]
 name = "kubernetes"
@@ -15,23 +15,23 @@ issuer = "https://agent.buildkite.com"
 [[publisher]]
 name = "ci"
 projects = ["*"]
-required_claims = {organization_slug="nresare"}
+required-claims = {organization_slug="nresare"}
 identity-provider = "buildkite"
 
 [[publisher]]
 name = "manual"
 projects = ["*"]
-required_claims = {sub="system:serviceaccount:default:default"}
+required-claims = {sub="system:serviceaccount:default:default"}
 identity-provider = "kubernetes"
 
 [object-store]
-backend = "S3"
+backend = "s3"
 bucket = "repo-noa-re"
-directory = "/data"
+# directory = "/data"
 
 [persistence]
 uri = "ws://surrealdb.surrealdb:8000"
 
 [persistence.idmouse]
 url = "http://idmouse.idmouse.svc/token/reposnake"
-token_path = "/var/run/secrets/tokens/idmouse"
+token-path = "/var/run/secrets/tokens/idmouse"

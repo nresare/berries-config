@@ -33,7 +33,7 @@ extra-resources = "envoy-gateway/extra"
 name = "repo.noa.re"
 namespace = "reposnake"
 replicas = 1
-image = "nresare/reposnake:0.1.4"
+image = "nresare/reposnake:0.1.5"
 args = ["-c", "/config/reposnake.toml"]
 config = { "/config/reposnake.toml" = "reposnake/reposnake.toml" }
 persistence = { "/data" = "2Gi" }
