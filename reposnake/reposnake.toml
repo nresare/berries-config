@@ -1,5 +1,4 @@
 bind_address = "0.0.0.0:8080"
-storage_directory = "/data"
 max_upload_bytes = 104857600
 
 [[identity-provider]]
@@ -24,6 +23,11 @@ name = "manual"
 projects = ["*"]
 required_claims = {sub="system:serviceaccount:default:default"}
 identity-provider = "kubernetes"
+
+[object-store]
+backend = "S3"
+bucket = "repo-noa-re"
+directory = "/data"
 
 [persistence]
 uri = "ws://surrealdb.surrealdb:8000"
