@@ -31,6 +31,6 @@ bucket = "repo-noa-re"
 [metadata-store]
 uri = "ws://surrealdb.surrealdb:8000"
 
-[persistence.idmouse]
+[metadata-store.idmouse]
 url = "http://idmouse.idmouse.svc/token/reposnake"
 token-path = "/var/run/secrets/tokens/idmouse"
