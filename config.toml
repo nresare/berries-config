@@ -32,17 +32,17 @@ extra-resources = "envoy-gateway/extra"
 [[website]]
 name = "repo.noa.re"
 namespace = "reposnake"
-replicas = 1
+replicas = 2
 image = "nresare/reposnake:0.1.6"
 args = ["-c", "/config/reposnake.toml"]
 config = { "/config/reposnake.toml" = "reposnake/reposnake.toml" }
-custom-token-audience = "idmouse"
+custom-token-audiences = ["idmouse", "sts.amazonaws.com"]
 emptydir-path = "/var/tmp"
 [website.env]
 AWS_STS_REGIONAL_ENDPOINTS = "regional"
 AWS_REGION = "eu-west-2"
 AWS_ROLE_ARN = "arn:aws:iam::190019502607:role/repo-noa-re"
-AWS_WEB_IDENTITY_TOKEN_FILE = "/var/run/secrets/kubernetes.io/serviceaccount/token"
+AWS_WEB_IDENTITY_TOKEN_FILE = "/var/run/secrets/tokens/sts.amazonaws.com"
 
 [[website]]
 name = "zq.lu"
@@ -61,7 +61,7 @@ namespace = "idelephant"
 replicas = 1
 image = "packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.24-gfcc6c51"
 args = ["-c", "/config/idelephant.toml"]
-custom-token-audience = "idmouse"
+custom-token-audiences = ["idmouse"]
 external-secrets = [
     "/db-password",
     "/email-password",
