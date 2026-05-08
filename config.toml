@@ -33,7 +33,7 @@ extra-resources = "envoy-gateway/extra"
 name = "repo.noa.re"
 namespace = "reposnake"
 replicas = 2
-image = "nresare/reposnake:0.1.6"
+image = "nresare/reposnake:0.1.7"
 args = ["-c", "/config/reposnake.toml"]
 config = { "/config/reposnake.toml" = "reposnake/reposnake.toml" }
 custom-token-audiences = ["idmouse", "sts.amazonaws.com"]
