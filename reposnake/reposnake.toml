@@ -1,5 +1,6 @@
 bind-address = "0.0.0.0:8080"
 max-upload-bytes = 104857600
+origin = "https://repo.noa.re"
 
 [[identity-provider]]
 name = "kubernetes"
