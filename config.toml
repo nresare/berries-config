@@ -59,11 +59,10 @@ extra-hostnames = "nadia.resare.com"
 name = "id.noa.re"
 namespace = "idelephant"
 replicas = 1
-image = "packages.buildkite.com/nresare/idelephant/idelephant:v0.2.3-rc.24-gfcc6c51"
+image = "repo.noa.re/idelephant:0.2.2-b73e0d6f"
 args = ["-c", "/config/idelephant.toml"]
 custom-token-audiences = ["idmouse"]
 external-secrets = [
-    "/db-password",
     "/email-password",
 ]
 [website.config]
