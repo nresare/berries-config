@@ -72,7 +72,7 @@ external-secrets = [
 name = "demo.resare.com"
 namespace = "demo"
 args = ["-c", "/config/config.toml"]
-image = "repo.noa.re/oidc-client-demo:0.1.0-c24e492b"
+image = "repo.noa.re/oidc-client-demo:0.1.0-0e03f03a"
 [website.config]
 "/config/config.toml" = "demo/config.toml"
 
