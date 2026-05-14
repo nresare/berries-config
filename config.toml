@@ -90,7 +90,7 @@ external-secrets = ["/app-keys"]
 name = "k8s.noa.re"
 namespace = "jwksproxy"
 replicas = 2
-image = "nresare/jwksproxy:latest"
+image = "repo.noa.re/jwksproxy:0.1.0-b89ffeed"
 [website.config]
 "/config/jwksproxy.toml" = "jwksproxy/jwksproxy.toml"
 
