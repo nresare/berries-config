@@ -14,3 +14,6 @@ spec:
   - backendRefs:
     - name: teleport-cluster
       port: 443
+      group: ""
+      kind: Service
+      weight: 1
