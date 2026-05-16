@@ -29,6 +29,11 @@ namespace = "envoy-gateway-system"
 release = "envoy-gateway"
 extra-resources = "envoy-gateway/extra"
 
+[[helm]]
+namespace = "envoy-gateway-system"
+release = "envoy-gateway-crds"
+values = ["envoy/crds-values.yaml"]
+
 [[website]]
 name = "repo.noa.re"
 namespace = "reposnake"
