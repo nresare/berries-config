@@ -1,4 +1,4 @@
-apiVersion: gateway.networking.k8s.io/v1alpha3
+apiVersion: gateway.networking.k8s.io/v1
 kind: TLSRoute
 metadata:
   name: teleport-cluster
@@ -13,7 +13,4 @@ spec:
   rules:
   - backendRefs:
     - name: teleport-cluster
-      group: ""
-      kind: Service
       port: 443
-      weight: 1
