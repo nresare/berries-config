@@ -23,3 +23,12 @@ ns = "default"
 db = "reposnake"
 ac = "reposnake"
 rl = ["Editor"]
+
+[[mapping]]
+name = "relcoord"
+allowed_subjects = ["system:serviceaccount:relcoord:default"]
+[mapping.additional_claims]
+ns = "default"
+db = "relcoord"
+ac = "relcoord"
+rl = ["Editor"]
