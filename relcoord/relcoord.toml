@@ -17,6 +17,6 @@ issuer = "https://k8s.noa.re"
 claims = { sub = "system:serviceaccount:default:default" }
 
 [idcat]
-endpoint = "http://idcat.noa.re"
+endpoint = "https://idcat.noa.re"
 github-app = "nresare-buildsystem"
 token-path = "/var/run/secrets/tokens/idcat.noa.re"
