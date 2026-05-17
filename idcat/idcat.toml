@@ -25,3 +25,8 @@ required-claims = {organization_slug="nresare", pipeline_slug="berries-config"}
 identity-provider = "kubernetes"
 github-app = "nresare-buildsystem"
 required-claims = {sub="system:serviceaccount:default:default"}
+
+[[access-policy]]
+identity-provider = "kubernetes"
+github-app = "nresare-buildsystem"
+required-claims = {sub="system:serviceaccount:relcoord:default"}
