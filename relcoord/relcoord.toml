@@ -5,7 +5,7 @@ port = 8080
 uri = "ws://surrealdb.surrealdb.svc:8000"
 namespace = "default"
 database = "relcoord"
-idmouse = {
-    url = "http://idmouse.idmouse.svc/token/relcoord",
-    token_path = "/var/run/secrets/tokens/idmouse"
-}
+
+[persistence.idmouse]
+url = "http://idmouse.idmouse.svc/token/relcoord"
+token_path = "/var/run/secrets/tokens/idmouse"
