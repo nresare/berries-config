@@ -9,3 +9,9 @@ database = "relcoord"
 [persistence.idmouse]
 url = "http://idmouse.idmouse.svc/token/relcoord"
 token_path = "/var/run/secrets/tokens/idmouse"
+
+[[role]]
+name = "manual"
+audience = "relcoord.noa.re"
+issuer = "https://k8s.noa.re"
+claims = { sub = "system:serviceaccount:default:default" }
