@@ -9,4 +9,3 @@ idmouse = {
     url = "http://idmouse.idmouse.svc/token/relcoord",
     token_path = "/var/run/secrets/tokens/idmouse"
 }
-n
