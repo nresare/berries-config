@@ -85,7 +85,7 @@ image = "repo.noa.re/oidc-client-demo:0.1.0-0e03f03a"
 name = "idcat.noa.re"
 namespace = "idcat"
 replicas = 2
-image = "nresare/idcat:0.2.1"
+image = "repo.noa.re/idcat:0.2.0-d113a144"
 args = ["--debug"]
 external-secrets = ["/app-keys"]
 [website.config]
