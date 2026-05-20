@@ -34,6 +34,10 @@ namespace = "envoy-gateway-system"
 release = "envoy-gateway-crds"
 values = ["envoy/crds-values.yaml"]
 
+[[helm]]
+namespace = "metrics-server"
+release = "metrics-server"
+
 [[website]]
 name = "repo.noa.re"
 namespace = "reposnake"

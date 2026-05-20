@@ -8,6 +8,8 @@ repositories:
   - name: envoyproxy
     url: docker.io/envoyproxy
     oci: true
+  - name: metrics-server
+    url: https://kubernetes-sigs.github.io/metrics-server/
 
 releases:
   - name: cert-manager
@@ -28,3 +30,6 @@ releases:
   - name: envoy-gateway-crds
     chart: envoyproxy/gateway-crds-helm
     version: 1.8.0
+  - name: metrics-server
+    chart: metrics-server/metrics-server
+    version: 3.13.0
