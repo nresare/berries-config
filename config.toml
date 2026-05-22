@@ -108,7 +108,7 @@ image = "repo.noa.re/jwksproxy:0.1.0-b89ffeed"
 name = "relcoord.noa.re"
 namespace = "relcoord"
 replicas = 2
-image = "repo.noa.re/relcoord:0.1.0-2f878510"
+image = "repo.noa.re/relcoord:0.1.0-c9823cd1"
 config = { "/config/relcoord.toml" = "relcoord/relcoord.toml"}
 custom-token-audiences = ["idmouse", "idcat.noa.re"]
 
