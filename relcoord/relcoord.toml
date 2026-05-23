@@ -1,5 +1,6 @@
 host = "0.0.0.0"
 port = 8080
+manifests-repo = "https://github.com/nresare/berries-manifests"
 
 [persistence]
 uri = "ws://surrealdb.surrealdb.svc:8000"
