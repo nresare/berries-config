@@ -39,21 +39,6 @@ namespace = "metrics-server"
 release = "metrics-server"
 
 [[website]]
-name = "repo.noa.re"
-namespace = "reposnake"
-replicas = 2
-image = "repo.noa.re/reposnake:0.2.1-56b70a18"
-args = ["-c", "/config/reposnake.toml"]
-config = { "/config/reposnake.toml" = "reposnake/reposnake.toml" }
-custom-token-audiences = ["idmouse", "sts.amazonaws.com"]
-emptydir-path = "/var/tmp"
-[website.env]
-AWS_STS_REGIONAL_ENDPOINTS = "regional"
-AWS_REGION = "eu-west-2"
-AWS_ROLE_ARN = "arn:aws:iam::190019502607:role/repo-noa-re"
-AWS_WEB_IDENTITY_TOKEN_FILE = "/var/run/secrets/tokens/sts.amazonaws.com"
-
-[[website]]
 name = "zq.lu"
 namespace = "web"
 hugo-repo = "https://github.com/nresare/zq.lu"
