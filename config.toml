@@ -50,23 +50,6 @@ hugo-repo = "https://github.com/nresare/noa.re"
 extra-hostnames = "nadia.resare.com"
 
 [[website]]
-name = "demo.resare.com"
-namespace = "demo"
-args = ["-c", "/config/config.toml"]
-image = "repo.noa.re/oidc-client-demo:0.1.0-0e03f03a"
-[website.config]
-"/config/config.toml" = "demo/config.toml"
-
-[[website]]
-name = "k8s.noa.re"
-namespace = "jwksproxy"
-replicas = 2
-image = "repo.noa.re/jwksproxy:0.1.0-b89ffeed"
-[website.config]
-"/config/jwksproxy.toml" = "jwksproxy/jwksproxy.toml"
-
-
-[[website]]
 name = "relcoord.noa.re"
 namespace = "relcoord"
 replicas = 2
@@ -79,4 +62,3 @@ namespace = "acme-dns"
 source = "acme-dns/manifests"
 [[copy.config]]
 "/etc/acme-dns/config.cfg" = "acme-dns/config.cfg"
-
