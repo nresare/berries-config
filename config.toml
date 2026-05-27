@@ -58,16 +58,6 @@ image = "repo.noa.re/oidc-client-demo:0.1.0-0e03f03a"
 "/config/config.toml" = "demo/config.toml"
 
 [[website]]
-name = "idcat.noa.re"
-namespace = "idcat"
-replicas = 2
-image = "repo.noa.re/idcat:0.2.0-ff192623"
-args = ["--debug"]
-external-secrets = ["/app-keys"]
-[website.config]
-"/config/idcat.toml" = "idcat/idcat.toml"
-
-[[website]]
 name = "k8s.noa.re"
 namespace = "jwksproxy"
 replicas = 2
@@ -80,7 +70,7 @@ image = "repo.noa.re/jwksproxy:0.1.0-b89ffeed"
 name = "relcoord.noa.re"
 namespace = "relcoord"
 replicas = 2
-image = "repo.noa.re/relcoord:0.1.0-876279ee"
+image = "repo.noa.re/relcoord:0.1.0-1377af11"
 config = { "/config/relcoord.toml" = "relcoord/relcoord.toml"}
 custom-token-audiences = ["idmouse", "idcat.noa.re"]
 
