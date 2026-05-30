@@ -10,6 +10,9 @@ repositories:
     oci: true
   - name: metrics-server
     url: https://kubernetes-sigs.github.io/metrics-server/
+  - name: grafana-community
+    url: ghcr.io/grafana-community/helm-charts
+    oci: true
 
 releases:
   - name: cert-manager
@@ -33,3 +36,6 @@ releases:
   - name: metrics-server
     chart: metrics-server/metrics-server
     version: 3.13.0
+  - name: grafana
+    chart: grafana-community/grafana
+    version: 12.4.1

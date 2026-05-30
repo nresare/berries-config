@@ -38,6 +38,10 @@ values = ["envoy/crds-values.yaml"]
 namespace = "metrics-server"
 release = "metrics-server"
 
+[[helm]]
+namespace = "grafana"
+release = "grafana"
+
 [[website]]
 name = "zq.lu"
 namespace = "web"
