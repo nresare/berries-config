@@ -53,7 +53,7 @@ extra-hostnames = "nadia.resare.com"
 name = "relcoord.noa.re"
 namespace = "relcoord"
 replicas = 2
-image = "repo.noa.re/relcoord:0.1.0-bc4b6fc6"
+image = "repo.noa.re/relcoord:0.1.0-af2f5310"
 config = {"/config/relcoord.toml" = "relcoord/relcoord.toml"}
 custom-token-audiences = ["idmouse", "idcat.noa.re"]
 
