@@ -1,12 +1,12 @@
 image:
-  tag: v3.0.5
+  tag: v3.1.2
 persistence:
   enabled: true
 strategy:
   type: Recreate
 surrealdb:
   path: surrealkv://data/db
-  log: debug
+  log: info
 podExtraEnv:
   - name: SURREAL_CAPS_ALLOW_NET
     value: idmouse.idmouse.svc
