@@ -1,6 +1,5 @@
 host = "0.0.0.0"
 port = 8080
-manifests-repository = "https://github.com/nresare/berries-manifests"
 
 [persistence]
 uri = "ws://surrealdb.surrealdb.svc:8000"
@@ -27,3 +26,7 @@ claims = {organization_slug="nresare"}
 endpoint = "https://idcat.noa.re"
 github-app = "nresare-buildsystem"
 token-path = "/var/run/secrets/tokens/idcat.noa.re"
+
+[[output]]
+name = "berries"
+repository = "https://github.com/nresare/berries-manifests"
