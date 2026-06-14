@@ -33,6 +33,11 @@ extra-resources = "envoy-gateway/extra"
 namespace = "metrics-server"
 release = "metrics-server"
 
+[[helm]]
+namespace = "grafana"
+release = "grafana-operator"
+values = ["grafana/values.yaml"]
+
 [[website]]
 name = "zq.lu"
 namespace = "web"
