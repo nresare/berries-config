@@ -6,3 +6,4 @@ the latest version of [manifest-builder](https://github.com/nresare/manifest-bui
 committed to [berries-manifests](https://github.com/nresare/berries-manifests).
 
 Please make new changes via pull requests
+
