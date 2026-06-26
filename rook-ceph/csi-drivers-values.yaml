@@ -24,7 +24,7 @@ drivers:
     enabled: true
     name: rook-ceph.rbd.csi.ceph.com # csi-provisioner-name
   cephfs:
-    enabled: true
+    enabled: false
     name: rook-ceph.cephfs.csi.ceph.com # csi-provisioner-name
   nfs:
     enabled: false
