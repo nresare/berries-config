@@ -2,6 +2,7 @@ image:
   tag: v3.1.2
 persistence:
   enabled: true
+  size: 1Gi
 strategy:
   type: Recreate
 surrealdb:

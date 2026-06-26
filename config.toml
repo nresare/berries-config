@@ -36,7 +36,19 @@ release = "metrics-server"
 [[helm]]
 namespace = "grafana"
 release = "grafana-operator"
+extra-resources = "grafana/extra"
 values = ["grafana/values.yaml"]
+
+[[helm]]
+namespace = "rook-ceph"
+release = "rook"
+extra-resources = "rook-ceph/extra"
+values = ["rook-ceph/rook-ceph-values.yaml"]
+
+[[helm]]
+namespace = "rook-ceph"
+release = "csi-drivers"
+values = ["rook-ceph/csi-drivers-values.yaml"]
 
 [[website]]
 name = "zq.lu"
@@ -61,3 +73,4 @@ custom-token-audiences = ["idmouse", "idcat.noa.re"]
 namespace = "acme-dns"
 source = "acme-dns/manifests"
 config = {"/etc/acme-dns/config.cfg" = "acme-dns/config.cfg"}
+
