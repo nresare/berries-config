@@ -50,6 +50,11 @@ namespace = "rook-ceph"
 release = "csi-drivers"
 values = ["rook-ceph/csi-drivers-values.yaml"]
 
+[[helm]]
+namespace = "argo"
+release = "argo"
+values = ["argo/values.yaml"]
+
 [[website]]
 name = "zq.lu"
 namespace = "web"

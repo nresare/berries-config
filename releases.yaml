@@ -17,6 +17,10 @@ repositories:
     url: https://charts.rook.io/release
   - name: ceph-csi-operator
     url: https://ceph.github.io/ceph-csi-operator
+  - name: argo
+    url: https://argoproj.github.io/argo-helm
+
+
 
 releases:
   - name: cert-manager
@@ -49,3 +53,6 @@ releases:
   - name: csi-drivers
     chart: ceph-csi-operator/ceph-csi-drivers
     version: 1.0.1
+  - name: argo
+    chart: argo/argo-cd
+    version: 9.5.22
