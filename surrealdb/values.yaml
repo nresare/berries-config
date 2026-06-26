@@ -1,5 +1,5 @@
 image:
-  tag: v3.1.2
+  tag: {{surrealdb_version}}
 persistence:
   enabled: true
   size: 1Gi
