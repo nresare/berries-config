@@ -17,3 +17,7 @@ version = "v1.1-distroless"
 [alpine]
 repo = "alpine"
 version = "3.24.1"
+
+[surrealdb]
+repo = "surrealdb/surrealdb"
+version = "v3.1.2"
