@@ -55,4 +55,4 @@ releases:
     version: 1.0.1
   - name: argo
     chart: argo/argo-cd
-    version: 10.0.0
+    version: 10.1.0
