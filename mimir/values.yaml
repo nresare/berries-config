@@ -57,3 +57,8 @@ mimir:
       remote_timeout: null
     ingester:
       push_grpc_method_enabled: null
+
+    alertmanager_storage:
+      storage_prefix: alertmanager
+    ruler_storage:
+      storage_prefix: ruler
