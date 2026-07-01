@@ -40,6 +40,11 @@ extra-resources = "grafana/extra"
 values = ["grafana/values.yaml"]
 
 [[helm]]
+namespace = "mimir"
+release = "mimir"
+values = ["mimir/values.yaml"]
+
+[[helm]]
 namespace = "rook-ceph"
 release = "rook"
 extra-resources = "rook-ceph/extra"

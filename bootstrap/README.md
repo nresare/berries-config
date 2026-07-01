@@ -4,15 +4,15 @@ These manual scripts bootstrap the IAM role used by Kubernetes workloads to
 access the `berries` Ceph Object Gateway (S3-compatible storage). Run them in
 numeric order.
 
-Scripts 01, 02, 04, and 06 use `radosgw-admin` and must run inside the
+Scripts 01, 02, 04, 06, and 07 use `radosgw-admin` and must run inside the
 `rook-ceph-tools` container:
 
 ```sh
 kubectl -n rook-ceph exec -it deploy/rook-ceph-tools -- bash
 ```
 
-Scripts 03 and 05 use the AWS CLI and must run locally against the RGW endpoint
-forwarded to `http://localhost:8080`.
+Scripts 03, 05, and 08 use the AWS CLI and must run locally against the RGW
+endpoint forwarded to `http://localhost:8080`.
 
 ## 01: Create the IAM administrator
 
@@ -80,7 +80,26 @@ namespace.
 The attached inline policy allows the role to list the `repo-noa-re` bucket and
 to put, get, and delete objects within it.
 
+## 07: Create the mimir role
+
+Run `07-create-mimir-role.sh` in the tools container. It creates a `mimir` role
+trusted by the `default` service account in the `mimir-test` namespace.
+
+The attached inline policy allows the role to list the `mimir-data` bucket and
+to put, get, and delete objects within it.
+
+## 08: Create the repo-noa-re bucket
+
+With `RGW_ENDPOINT` still set, run this locally:
+
+```sh
+./bootstrap/08-create-repo-noa-re-bucket.sh
+```
+
+The script uses the `rgw-admin` AWS profile to create the `repo-noa-re` bucket
+through the S3 API.
+
 These scripts are intended for initial bootstrap. Existing users, providers,
-or roles may cause the corresponding command to fail. The role trust policy
-only controls who may assume the role; S3 permissions must also be attached to
-the role before workloads can access buckets.
+roles, or buckets may cause the corresponding command to fail. The role trust
+policy only controls who may assume the role; S3 permissions must also be
+attached to the role before workloads can access buckets.
