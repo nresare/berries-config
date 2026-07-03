@@ -10,9 +10,11 @@ repositories:
     oci: true
   - name: metrics-server
     url: https://kubernetes-sigs.github.io/metrics-server/
-  - name: grafana
+  - name: grafana-oci
     url: ghcr.io/grafana/helm-charts
     oci: true
+  - name: grafana
+    url: https://grafana.github.io/helm-charts
   - name: rook
     url: https://charts.rook.io/release
   - name: ceph-csi-operator
@@ -45,11 +47,14 @@ releases:
     chart: metrics-server/metrics-server
     version: 3.13.1
   - name: grafana-operator
-    chart: grafana/grafana-operator
+    chart: grafana-oci/grafana-operator
     version: 5.24.0
   - name: mimir
-    chart: grafana/mimir-distributed
+    chart: grafana-oci/mimir-distributed
     version: 6.1.0
+  - name: alloy
+    chart: grafana/alloy
+    version: 1.10.0
   - name: rook
     chart: rook/rook-ceph
     version: 1.20.1
