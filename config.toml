@@ -45,6 +45,12 @@ release = "mimir"
 values = ["mimir/values.yaml"]
 
 [[helm]]
+namespace = "alloy"
+release = "alloy"
+values = ["alloy/values.yaml"]
+config = {"alloy.cfg" = "alloy/alloy.cfg"}
+
+[[helm]]
 namespace = "rook-ceph"
 release = "rook"
 extra-resources = "rook-ceph/extra"
