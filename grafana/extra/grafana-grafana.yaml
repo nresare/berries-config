@@ -16,3 +16,8 @@ spec:
           noa.re/discover: enabled
         annotations:
           teleport.dev/name: grafana
+    config:
+      security:
+        csrf_trusted_origins: grafana.teleport.noa.re
+      server:
+        root_url: https://grafana.teleport.noa.re
