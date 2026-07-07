@@ -57,7 +57,7 @@ releases:
     version: 1.10.0
   - name: rook
     chart: rook/rook-ceph
-    version: 1.20.1
+    version: v1.20.2
   - name: csi-drivers
     chart: ceph-csi-operator/ceph-csi-drivers
     version: 1.0.3
