@@ -54,7 +54,7 @@ releases:
     version: 6.1.0
   - name: alloy
     chart: grafana/alloy
-    version: 1.10.0
+    version: 1.10.1
   - name: rook
     chart: rook/rook-ceph
     version: v1.20.2
