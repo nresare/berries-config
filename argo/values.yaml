@@ -8,3 +8,5 @@ server:
 configs:
   params:
     "server.insecure": true
+dex:
+  enabled: false
