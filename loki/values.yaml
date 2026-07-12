@@ -2,10 +2,14 @@
 
 # The config reload sidecar fails due to
 # certificate verify failed: CA cert does not include key usage extension
-# but since we dont use this, let's disable the sidecar
+# but since we don't use this, let's disable the sidecar
 sidecar:
   rules:
     enabled: false
+# the default values tries to allocate 8gb for the chunks cache. Which we obviously don't have
+chunksCache:
+  allocatedMemory: 850
+
 
 defaults:
   extraEnv:
