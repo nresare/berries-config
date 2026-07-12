@@ -67,7 +67,7 @@ values = ["rook-ceph/csi-drivers-values.yaml"]
 
 [[helm]]
 namespace = "argo"
-release = "argo"
+release = "argocd"
 values = ["argo/values.yaml"]
 
 [[website]]

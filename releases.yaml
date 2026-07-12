@@ -61,6 +61,6 @@ releases:
   - name: csi-drivers
     chart: ceph-csi-operator/ceph-csi-drivers
     version: 1.0.4
-  - name: argo
+  - name: argocd
     chart: argo/argo-cd
-    version: 10.1.2
+    version: 10.1.3
