@@ -20,7 +20,7 @@ cat >"$trust_policy_file" <<'JSON'
         "StringEquals": {
           "k8s.noa.re:aud": "sts.amazonaws.com",
           "k8s.noa.re:sub": [
-            "system:serviceaccount:mimir:mimir"
+            "system:serviceaccount:loki:loki"
           ]
         }
       }
@@ -36,7 +36,8 @@ cat >"$permission_policy_file" <<'JSON'
     {
       "Action": "s3:ListBucket",
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::mimir-data"
+      "Resource": ["arn:aws:s3:::loki-data","arn:aws:s3:::loki-ruler"]
+
     },
     {
       "Action": [
@@ -45,7 +46,10 @@ cat >"$permission_policy_file" <<'JSON'
         "s3:DeleteObject"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::mimir-data/*"
+      "Resource": [
+        "arn:aws:s3:::loki-data/*",
+        "arn:aws:s3:::loki-ruler/*",
+      ]
     }
   ]
 }
@@ -56,11 +60,11 @@ permission_policy="$(jq -c . "$permission_policy_file")"
 
 radosgw-admin role create \
   --rgw-realm berries \
-  --role-name mimir \
+  --role-name loki \
   --assume-role-policy-doc "$trust_policy"
 
 radosgw-admin role-policy put \
   --rgw-realm berries \
-  --role-name mimir \
-  --policy-name repo-noa-re-access \
+  --role-name loki \
+  --policy-name loki-access \
   --policy-doc "$permission_policy"

@@ -55,6 +55,11 @@ values = ["alloy/values.yaml"]
 config = {"alloy.cfg" = "alloy/alloy.cfg"}
 
 [[helm]]
+namespace = "loki"
+release = "loki"
+values = ["loki/values.yaml"]
+
+[[helm]]
 namespace = "rook-ceph"
 release = "rook"
 extra-resources = "rook-ceph/extra"
