@@ -1,5 +1,12 @@
 # https://grafana.com/docs/loki/latest/setup/install/helm/install-monolithic/
 
+# The config reload sidecar fails due to
+# certificate verify failed: CA cert does not include key usage extension
+# but since we dont use this, let's disable the sidecar
+sidecar:
+  rules:
+    enabled: false
+
 defaults:
   extraEnv:
     - name: AWS_ROLE_ARN
