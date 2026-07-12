@@ -10,4 +10,6 @@ surrealdb:
   log: info
 podExtraEnv:
   - name: SURREAL_CAPS_ALLOW_NET
-    value: idmouse.idmouse.svc
+    value: idmouse.idmouse.svc,10.0.0.0/8
+podSecurityContext:
+  fsGroup: 65532

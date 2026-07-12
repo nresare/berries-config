@@ -10,7 +10,6 @@ extra-resources = "cert-manager/extra"
 [[helm]]
 namespace = "surrealdb"
 release = "surrealdb"
-init = "surrealdb/fix-permissions.sh"
 values = ["surrealdb/values.yaml"]
 
 [[helm]]
