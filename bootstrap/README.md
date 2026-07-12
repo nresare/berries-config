@@ -103,3 +103,10 @@ These scripts are intended for initial bootstrap. Existing users, providers,
 roles, or buckets may cause the corresponding command to fail. The role trust
 policy only controls who may assume the role; S3 permissions must also be
 attached to the role before workloads can access buckets.
+
+
+## Also, argo-cd bootstrap
+
+`install.sh`, referencing `minimal-argocd-values.yaml` will install argo-cd
+with a minimal configuration, so that it can move to maintaining itself from
+the berries-manifests repo
