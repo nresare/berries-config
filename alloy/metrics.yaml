@@ -2,6 +2,8 @@ alloy:
   configMap:
     create: false
     name: alloy-config
-    key: alloy.cfg
+    key: metrics.cfg
 controller:
   type: deployment
+crds:
+  create: false

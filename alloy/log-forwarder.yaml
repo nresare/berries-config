@@ -1,0 +1,22 @@
+alloy:
+  configMap:
+    create: false
+    name: alloy-log-forwarder-config
+    key: log-forwarder.cfg
+  mounts:
+    varlog: true
+    dockercontainers: true
+    extra:
+      - name: run-log-journal
+        mountPath: /run/log/journal
+        readOnly: true
+
+controller:
+  type: daemonset
+  volumes:
+    extra:
+      - name: run-log-journal
+        hostPath:
+          path: /run/log/journal
+          type: DirectoryOrCreate
+
