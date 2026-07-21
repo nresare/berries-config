@@ -46,8 +46,15 @@ values = ["mimir/values.yaml"]
 [[helm]]
 namespace = "alloy"
 release = "alloy"
-values = ["alloy/values.yaml"]
-config = {"alloy.cfg" = "alloy/alloy.cfg"}
+values = ["alloy/metrics.yaml"]
+config = {"metrics.cfg" = "alloy/metrics.cfg"}
+
+[[helm]]
+namespace = "alloy"
+name-override = "alloy-log-forwarder"
+release = "alloy"
+values = ["alloy/log-forwarder.yaml"]
+config = {"log-forwarder.cfg" = "alloy/log-forwarder.cfg"}
 
 [[helm]]
 namespace = "loki"
