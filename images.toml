@@ -20,7 +20,7 @@ version = "3.24.1"
 
 [surrealdb]
 repo = "surrealdb/surrealdb"
-version = "v3.2.1"
+version = "v3.2.3"
 
 [ceph]
 repo = "quay.io/ceph/ceph"
