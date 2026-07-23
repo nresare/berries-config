@@ -25,4 +25,4 @@ version = "v3.2.1"
 # rook only support up to v20 major version at this point
 [ceph]
 repo = "quay.io/ceph/ceph"
-version = "v20.2.2"
+version = "v21.1"
