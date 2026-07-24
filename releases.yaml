@@ -68,4 +68,4 @@ releases:
     version: 1.0.4
   - name: argocd
     chart: argo/argo-cd
-    version: 10.2.0
+    version: 10.2.1
