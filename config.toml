@@ -8,6 +8,10 @@ values = ["cert-manager/values.yaml"]
 extra-resources = "cert-manager/extra"
 
 [[helm]]
+namespace = "cert-manager"
+release = "trust-manager"
+
+[[helm]]
 namespace = "surrealdb"
 release = "surrealdb"
 values = ["surrealdb/values.yaml"]
