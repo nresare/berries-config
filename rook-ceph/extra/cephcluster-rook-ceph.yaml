@@ -204,6 +204,8 @@ spec:
   #    mgr:
   #    cleanup:
   annotations:
+    dashboard:
+      teleport.dev/port: http-dashboard
   #   all:
   #   mon:
   #   mgr:
@@ -221,6 +223,8 @@ spec:
   # If no mgr annotations are set, prometheus scrape annotations will be set by default.
   #   mgr:
   labels:
+    dashboard:
+      noa.re/discover: enabled
   #   all:
   #   mon:
   #   osd:
