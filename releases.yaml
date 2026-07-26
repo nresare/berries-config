@@ -23,7 +23,9 @@ repositories:
     url: https://ceph.github.io/ceph-csi-operator
   - name: argo
     url: https://argoproj.github.io/argo-helm
-
+  - name: prometheus-community
+    url: ghcr.io/prometheus-community/charts
+    oci: true
 
 
 releases:
@@ -72,3 +74,6 @@ releases:
   - name: argocd
     chart: argo/argo-cd
     version: 10.2.1
+  - name: kube-state-metrics
+    chart: prometheus-community/kube-state-metrics
+    version: 8.0.0
