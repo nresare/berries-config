@@ -52,6 +52,7 @@ namespace = "alloy"
 release = "alloy"
 values = ["alloy/metrics.yaml"]
 config = {"metrics.cfg" = "alloy/metrics.cfg"}
+extra-resources = "alloy/metrics-extra"
 
 [[helm]]
 namespace = "alloy"
