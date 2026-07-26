@@ -84,6 +84,7 @@ values = ["argo/values.yaml"]
 [[helm]]
 namespace = "kube-state-metrics"
 release = "kube-state-metrics"
+extra-resources = "kube-state-metrics/extra"
 
 [[website]]
 name = "zq.lu"
