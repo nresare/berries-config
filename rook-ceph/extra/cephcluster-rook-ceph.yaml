@@ -243,6 +243,11 @@ spec:
         memory: "512Mi"
       limits:
         memory: "1Gi"
+    osd:
+      requests:
+        memory: "800Mi"
+      limits:
+        memory: "1Gi"
   # The above example requests/limits can also be added to the other components
   #   mon:
   #   osd:
