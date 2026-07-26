@@ -238,6 +238,11 @@ spec:
   #   monitoring:
   #   crashcollector:
   resources:
+    mon:
+      requests:
+        memory: "768Mi"
+      limits:
+        memory: "1536Mi"
     mgr:
       requests:
         memory: "512Mi"
