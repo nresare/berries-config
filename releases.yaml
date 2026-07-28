@@ -67,7 +67,7 @@ releases:
     version: 18.7.0
   - name: rook
     chart: rook/rook-ceph
-    version: v1.20.2
+    version: v1.20.3
   - name: csi-drivers
     chart: ceph-csi-operator/ceph-csi-drivers
     version: 1.0.4
