@@ -26,6 +26,9 @@ repositories:
   - name: prometheus-community
     url: ghcr.io/prometheus-community/charts
     oci: true
+  - name: nats
+    url: https://nats-io.github.io/k8s/helm/charts/
+
 
 
 releases:
@@ -77,3 +80,6 @@ releases:
   - name: kube-state-metrics
     chart: prometheus-community/kube-state-metrics
     version: 8.0.0
+  - name: nats
+    chart: nats/nats
+    version: 2.14.2
