@@ -87,6 +87,10 @@ namespace = "kube-state-metrics"
 release = "kube-state-metrics"
 extra-resources = "kube-state-metrics/extra"
 
+[[helm]]
+namespace = "nats"
+release = "nats"
+
 [[website]]
 name = "zq.lu"
 namespace = "web"
