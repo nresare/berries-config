@@ -46,7 +46,7 @@ releases:
     version: 18.10.3
   - name: teleport-kube-agent
     chart: teleport/teleport-kube-agent
-    version: 18.10.1
+    version: 18.10.3
   - name: envoy-gateway
     chart: envoyproxy/gateway-helm
     version: 1.8.3
