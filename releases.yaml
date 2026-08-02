@@ -79,7 +79,7 @@ releases:
     version: 10.2.2
   - name: kube-state-metrics
     chart: prometheus-community/kube-state-metrics
-    version: 8.0.0
+    version: 8.1.2
   - name: nats
     chart: nats/nats
     version: 2.14.2
