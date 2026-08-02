@@ -7,6 +7,7 @@ server:
       noa.re/discover: enabled
 configs:
   params:
-    "server.insecure": true
+    server.insecure: true
+    controller.diff.server.side: true
 dex:
   enabled: false
