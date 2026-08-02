@@ -4,7 +4,7 @@
 [[helm]]
 namespace = "cert-manager"
 release = "cert-manager"
-values = ["cert-manager/values.yaml"]
+values = "cert-manager/values.yaml"
 extra-resources = "cert-manager/extra"
 
 [[helm]]
@@ -14,18 +14,18 @@ release = "trust-manager"
 [[helm]]
 namespace = "surrealdb"
 release = "surrealdb"
-values = ["surrealdb/values.yaml"]
+values = "surrealdb/values.yaml"
 
 [[helm]]
 namespace = "teleport-cluster"
 release = "teleport-cluster"
-values = ["teleport/cluster-values.yaml"]
+values = "teleport/cluster-values.yaml"
 extra-resources = "teleport/extra"
 
 [[helm]]
 namespace = "teleport"
 release = "teleport-kube-agent"
-values = ["teleport/agent-values.yaml"]
+values = "teleport/agent-values.yaml"
 
 [[helm]]
 namespace = "envoy-gateway-system"
@@ -40,17 +40,17 @@ release = "metrics-server"
 namespace = "grafana"
 release = "grafana-operator"
 extra-resources = "grafana/extra"
-values = ["grafana/values.yaml"]
+values = "grafana/values.yaml"
 
 [[helm]]
 namespace = "mimir"
 release = "mimir"
-values = ["mimir/values.yaml"]
+values = "mimir/values.yaml"
 
 [[helm]]
 namespace = "alloy"
 release = "alloy"
-values = ["alloy/metrics.yaml"]
+values = "alloy/metrics.yaml"
 config = {"metrics.cfg" = "alloy/metrics.cfg"}
 extra-resources = "alloy/metrics-extra"
 
@@ -58,29 +58,29 @@ extra-resources = "alloy/metrics-extra"
 namespace = "alloy"
 name-override = "alloy-log-forwarder"
 release = "alloy"
-values = ["alloy/log-forwarder.yaml"]
+values = "alloy/log-forwarder.yaml"
 config = {"log-forwarder.cfg" = "alloy/log-forwarder.cfg"}
 
 [[helm]]
 namespace = "loki"
 release = "loki"
-values = ["loki/values.yaml"]
+values = "loki/values.yaml"
 
 [[helm]]
 namespace = "rook-ceph"
 release = "rook"
 extra-resources = "rook-ceph/extra"
-values = ["rook-ceph/rook-ceph-values.yaml"]
+values = "rook-ceph/rook-ceph-values.yaml"
 
 [[helm]]
 namespace = "rook-ceph"
 release = "csi-drivers"
-values = ["rook-ceph/csi-drivers-values.yaml"]
+values = "rook-ceph/csi-drivers-values.yaml"
 
 [[helm]]
 namespace = "argo"
 release = "argocd"
-values = ["argo/values.yaml"]
+values = "argo/values.yaml"
 
 [[helm]]
 namespace = "kube-state-metrics"
@@ -90,6 +90,7 @@ extra-resources = "kube-state-metrics/extra"
 [[helm]]
 namespace = "nats"
 release = "nats"
+values = "nats/values.yaml"
 
 [[website]]
 name = "zq.lu"
