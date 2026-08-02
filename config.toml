@@ -92,6 +92,19 @@ namespace = "nats"
 release = "nats"
 values = "nats/values.yaml"
 
+[[simple]]
+name = "nats-aws-auth"
+namespace = "nats"
+image = "nresare/nats-aws-auth:local-key-storage"
+external-secret = "/keys"
+args = [
+    "--url=nats://nats.nats",
+    "--auth-backend=k8s-oidc",
+    "--jwt-issuer=https://k8s.noa.re",
+    "--key-storage=directory",
+    "--key-dir=/keys"
+]
+
 [[website]]
 name = "zq.lu"
 namespace = "web"
