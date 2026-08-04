@@ -109,6 +109,7 @@ args = [
 namespace = "nats"
 release = "nack"
 values = "nats/nack-values.yaml"
+custom-token-audiences = ["nats"]
 
 [[website]]
 name = "zq.lu"

@@ -29,7 +29,7 @@ repositories:
   - name: nats
     url: https://nats-io.github.io/k8s/helm/charts/
   - name: nack
-    url: repo.noa.re/nack
+    url: repo.noa.re
     oci: true
 
 
@@ -88,4 +88,4 @@ releases:
     version: 2.14.2
   - name: nack
     chart: nack/nack
-    version: 0.34.0+noa
+    version: 0.34.1+noa.1
