@@ -105,6 +105,11 @@ args = [
     "--key-dir=/keys"
 ]
 
+[[helm]]
+namespace = "nats"
+release = "nack"
+values = "nats/nack-values.yaml"
+
 [[website]]
 name = "zq.lu"
 namespace = "web"
