@@ -19,6 +19,8 @@ testpaths = ["tests"]
 
 [tool.ruff.lint.per-file-ignores]
 # Config blocks consistently report malformed user configuration as ValueError.
+"helm.py" = ["TRY004"]
+"simple.py" = ["TRY004"]
 "website.py" = ["TRY004"]
 
 [[tool.uv.index]]
