@@ -9,7 +9,7 @@ committed to [berries-manifests](https://github.com/nresare/berries-manifests).
 
 The `[[website]]` config block is implemented locally in
 [`plugins/website.py`](./plugins/website.py), with its Mustache templates and
-tests alongside it. Manifest-builder discovers the handler from the top-level
+tests alongside it. Manifest-builder discovers the block from the top-level
 `plugins/` directory when this configuration is loaded.
 
 ### Hugo website backend TLS
