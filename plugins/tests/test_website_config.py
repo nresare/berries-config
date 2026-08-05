@@ -7,15 +7,15 @@ from collections.abc import Sequence
 from pathlib import Path
 
 import pytest
+from manifest_builder.blocks import ConfigBlock
 from manifest_builder.config import (
     DEFAULT_REPLICA_COUNT,
     ManifestConfig,
     load_configs,
     resolve_configs,
 )
-from manifest_builder.handlers import ConfigHandler
 
-from website import WebsiteConfig, WebsiteConfigHandler
+from website import WebsiteBlock, WebsiteConfig
 
 
 def write_toml(directory: Path, name: str, content: str) -> Path:
@@ -25,33 +25,33 @@ def write_toml(directory: Path, name: str, content: str) -> Path:
 
 
 def all_configs(
-    handlers: Sequence[ConfigHandler],
+    blocks: Sequence[ConfigBlock],
 ) -> tuple[ManifestConfig, ...]:
-    return tuple(config for handler in handlers for config in handler.iter_configs())
+    return tuple(config for block in blocks for config in block.iter_configs())
 
 
 def only_config(
-    handlers: Sequence[ConfigHandler],
+    blocks: Sequence[ConfigBlock],
 ) -> ManifestConfig:
-    (config,) = all_configs(handlers)
+    (config,) = all_configs(blocks)
     return config
 
 
-def config_handlers() -> list[WebsiteConfigHandler]:
-    return [WebsiteConfigHandler()]
+def config_blocks() -> list[WebsiteBlock]:
+    return [WebsiteBlock()]
 
 
 def load_test_configs(
     config_dir: Path,
-) -> Sequence[ConfigHandler]:
-    return load_configs(config_dir, config_handlers())
+) -> Sequence[ConfigBlock]:
+    return load_configs(config_dir, config_blocks())
 
 
 def manifest_configs(
     *,
     websites: list[WebsiteConfig] | None = None,
-) -> list[WebsiteConfigHandler]:
-    return [WebsiteConfigHandler(websites)]
+) -> list[WebsiteBlock]:
+    return [WebsiteBlock(websites)]
 
 
 # WebsiteConfig parsing
@@ -173,7 +173,7 @@ def test_load_website_config_uses_default_image(tmp_path: Path) -> None:
 
     configs = load_configs(
         conf_dir,
-        config_handlers(),
+        config_blocks(),
         default_namespace="production",
         default_image="nginx:latest",
     )
@@ -202,7 +202,7 @@ def test_load_website_config_rejects_image_with_default_image(
     with pytest.raises(ValueError, match="Cannot specify 'image'.*generate"):
         load_configs(
             conf_dir,
-            config_handlers(),
+            config_blocks(),
             default_namespace="production",
             default_image="example.com/override:1.0",
         )
@@ -453,7 +453,7 @@ def test_validate_config_missing_config_file(tmp_path: Path) -> None:
         config={"/config/app.toml": tmp_path / "nonexistent.toml"},
     )
     with pytest.raises(ValueError, match="Config file not found"):
-        WebsiteConfigHandler().validate(config, tmp_path)
+        WebsiteBlock().validate(config, tmp_path)
 
 
 def test_load_website_config_with_extra_hostnames_string(tmp_path: Path) -> None:

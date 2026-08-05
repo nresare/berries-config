@@ -9,7 +9,7 @@ import pytest
 import yaml
 from manifest_builder.generator import ManifestError, generate_manifests
 
-from website import WebsiteConfig, WebsiteConfigHandler, generate_website
+from website import WebsiteBlock, WebsiteConfig, generate_website
 
 SIMPLE_DEPLOYMENT = """\
 apiVersion: apps/v1
@@ -154,7 +154,7 @@ def test_generate_manifests_with_website_config(tmp_path: Path) -> None:
     output_dir = tmp_path / "output"
 
     generate_manifests(
-        [WebsiteConfigHandler([config])],
+        [WebsiteBlock([config])],
         output_dir,
         repo_root=tmp_path,
     )
@@ -209,7 +209,7 @@ def test_generate_manifests_removes_stale_website_files(tmp_path: Path) -> None:
 
     config = WebsiteConfig(name="zq.lu", namespace="web")
     generate_manifests(
-        [WebsiteConfigHandler([config])],
+        [WebsiteBlock([config])],
         output_dir,
         repo_root=tmp_path,
     )
@@ -268,7 +268,7 @@ def test_generate_manifests_detects_output_file_conflicts(tmp_path: Path) -> Non
         pytest.raises(ManifestError, match="Configuration conflict") as exc_info,
     ):
         generate_manifests(
-            [WebsiteConfigHandler([config1, config2])],
+            [WebsiteBlock([config1, config2])],
             output_dir,
             repo_root=tmp_path,
         )
