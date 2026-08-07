@@ -70,7 +70,7 @@ releases:
     version: 1.11.0
   - name: loki
     chart: grafana-community/loki
-    version: 18.7.1
+    version: 18.7.5
   - name: rook
     chart: rook/rook-ceph
     version: v1.20.3
