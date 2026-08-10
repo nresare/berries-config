@@ -109,6 +109,7 @@ args = [
 namespace = "nats"
 release = "nack"
 values = "nats/nack-values.yaml"
+extra-resources = "nats/extra"
 custom-token-audiences = ["nats"]
 
 [[website]]
