@@ -95,6 +95,7 @@ values = "nats/values.yaml"
 [[simple]]
 name = "nats-aws-auth"
 namespace = "nats"
+replicas = 1
 image = "nresare/nats-aws-auth:local-key-storage"
 external-secret = "/keys"
 args = [
