@@ -5,7 +5,8 @@ metadata:
 spec:
   streamName: github-events
   durableName: argo-poker
-  filterSubjects: idcat.github.events.push.portswigger-cloud.manifests
+  filterSubjects: 
+    - idcat.github.events.push.nresare.berries-manifests
   ackPolicy: explicit
-  deliveryPolicy: last
+  deliverPolicy: last
   account: app
