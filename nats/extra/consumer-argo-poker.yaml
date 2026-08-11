@@ -8,3 +8,4 @@ spec:
   filterSubjects: idcat.github.events.push.portswigger-cloud.manifests
   ackPolicy: explicit
   deliveryPolicy: last
+  account: app
