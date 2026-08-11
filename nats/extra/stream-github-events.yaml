@@ -8,3 +8,4 @@ spec:
   storage: file
   maxAge: 1h
   replicas: 3
+  account: app

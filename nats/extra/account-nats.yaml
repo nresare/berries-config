@@ -1,7 +1,7 @@
 apiVersion: jetstream.nats.io/v1beta2
 kind: Account
 metadata:
-  name: nack
+  name: app
 spec:
   token:
     file: /var/run/secrets/tokens/nats
