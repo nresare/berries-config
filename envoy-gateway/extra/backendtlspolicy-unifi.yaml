@@ -5,8 +5,8 @@ metadata:
   namespace: envoy-gateway-system
 spec:
   targetRefs:
-    - group: ""
-      kind: Service
+    - group: gateway.envoyproxy.io
+      kind: Backend
       name: unifi-noa-re
   validation:
     caCertificateRefs:
