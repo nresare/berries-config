@@ -12,7 +12,6 @@ spec:
     - unifi.noa.re
   rules:
     - backendRefs:
-        - group: ""
-          kind: Service
+        - group: gateway.envoyproxy.io
+          kind: Backend
           name: unifi-noa-re
-          port: 443
