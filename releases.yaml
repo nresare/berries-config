@@ -79,7 +79,7 @@ releases:
     version: 1.0.4
   - name: argocd
     chart: argo/argo-cd
-    version: 10.2.2
+    version: 10.4.0
   - name: kube-state-metrics
     chart: prometheus-community/kube-state-metrics
     version: 8.1.3
