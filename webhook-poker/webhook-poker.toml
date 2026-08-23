@@ -1,0 +1,17 @@
+listen = "0.0.0.0"
+port = 8080
+log-level = "INFO"
+
+[nats]
+servers = ["nats://nats.nats.svc"]
+name = "webhook-poker"  # client name shown in NATS server connection listings
+token-path = "/var/run/secrets/tokens"
+
+[[target]]
+name = "berries"
+url = "http://argocd-server.argo.svc/api/webhook"
+
+[[subscription]]
+name = "argo-poker"
+stream = "github-events"
+targets = ["berries"]
