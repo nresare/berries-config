@@ -113,7 +113,7 @@ namespace = "webhook-poker"
 replicas = 1
 image = "public.ecr.aws/portswigger-platform/webhook-poker:0.0.6"
 custom-token-audiences = ["nats"]
-config = {"/config/webhook-poker" = "webhook-poker/webhook-poker.toml"}
+config = {"/config/webhook-poker.toml" = "webhook-poker/webhook-poker.toml"}
 
 
 [[helm]]
