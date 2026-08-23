@@ -31,8 +31,9 @@ repositories:
   - name: nack
     url: repo.noa.re
     oci: true
-
-
+  - name: portswigger-platform
+    oci: true
+    url: public.ecr.aws/portswigger-platform/charts
 
 releases:
   - name: cert-manager
@@ -89,3 +90,6 @@ releases:
   - name: nack
     chart: nack/nack
     version: 0.34.1+noa.1
+  - name: randomsecret
+    chart: portswigger-platform/randomsecret
+    version: 0.1.4

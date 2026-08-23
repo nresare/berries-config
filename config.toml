@@ -108,6 +108,10 @@ args = [
 ]
 
 [[helm]]
+namespace = "randomsecret"
+release = "randomsecret"
+
+[[helm]]
 namespace = "nats"
 release = "nack"
 values = "nats/nack-values.yaml"
