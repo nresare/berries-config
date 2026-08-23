@@ -65,7 +65,7 @@ releases:
     version: 5.24.0
   - name: mimir
     chart: grafana-oci/mimir-distributed
-    version: 6.1.0
+    version: 6.2.0
   - name: alloy
     chart: grafana/alloy
     version: 1.11.0
