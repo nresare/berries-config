@@ -113,8 +113,9 @@ namespace = "webhook-poker"
 replicas = 1
 image = "public.ecr.aws/portswigger-platform/webhook-poker:0.0.6"
 custom-token-audiences = ["nats"]
-config = {"/config/webhook-poker.toml" = "webhook-poker/webhook-poker.toml"}
-
+config = { "/config/webhook-poker.toml" = "webhook-poker/webhook-poker.toml" }
+[simple.service-account-annotations]
+"nats.io/allowed-pub-subjects" = "$JS.API.CONSUMER.INFO.github-events.argo-poker,$JS.API.CONSUMER.MSG.NEXT.github-events.argo-poker,$JS.ACK.github-events.argo-poker.>"
 
 [[helm]]
 namespace = "randomsecret"
