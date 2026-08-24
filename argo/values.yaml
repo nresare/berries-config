@@ -8,7 +8,7 @@ server:
 configs:
   params:
     server.insecure: true
-    controller.diff.server.side: true
+    #controller.diff.server.side: true
     reposerver.max.combined.directory.manifests.size: '30M'
 dex:
   enabled: false
