@@ -129,6 +129,7 @@ def _parse_website_config(
             "emptydir-path",
             "config",
             "extra-hostnames",
+            "external-secret",
             "external-secrets",
             "custom-token-audiences",
             "persistence",
@@ -170,9 +171,7 @@ def _parse_website_config(
             for container_path, local_path in data["config"].items()
         }
 
-    external_secrets = data.get("external-secrets")
-    if external_secrets is not None and isinstance(external_secrets, str):
-        external_secrets = [external_secrets]
+    external_secrets = _parse_external_secrets(data, source_file)
 
     custom_token_audiences = data.get("custom-token-audiences")
     if custom_token_audiences is not None and (
@@ -206,6 +205,47 @@ def _parse_website_config(
         persistence=data.get("persistence"),
         replicas=data.get("replicas", DEFAULT_REPLICA_COUNT),
     )
+
+
+def _parse_external_secrets(data: dict, source_file: Path) -> list[str] | None:
+    """Normalize singular and plural external secret fields into mount paths.
+
+    A single mount path may also be given as a bare plural-field string for
+    backwards compatibility.
+    """
+    external_secret = data.get("external-secret")
+    external_secrets = data.get("external-secrets")
+
+    if external_secret is not None and external_secrets is not None:
+        raise ValueError(
+            f"Cannot specify both 'external-secret' and 'external-secrets' in {source_file}"
+        )
+
+    if external_secret is not None:
+        if not isinstance(external_secret, str):
+            raise ValueError(f"'external-secret' must be a string in {source_file}")
+        return [external_secret]
+
+    if external_secrets is None:
+        return None
+
+    if isinstance(external_secrets, str):
+        return [external_secrets]
+
+    if not isinstance(external_secrets, list):
+        raise ValueError(
+            f"'external-secrets' must be a string or list of strings in {source_file}"
+        )
+
+    mount_paths: list[str] = []
+    for mount_path in external_secrets:
+        if not isinstance(mount_path, str):
+            raise ValueError(
+                f"'external-secrets' must be a string or list of strings in "
+                f"{source_file}"
+            )
+        mount_paths.append(mount_path)
+    return mount_paths
 
 
 def _validate_env_config(env: object, source_file: Path) -> None:

@@ -534,6 +534,89 @@ external-secrets = "/api-key"
     assert config.external_secrets == ["/api-key"]
 
 
+def test_load_website_config_with_external_secret(tmp_path: Path) -> None:
+    """A singular external-secret is normalized to a one-element list."""
+    write_toml(
+        tmp_path,
+        "config.toml",
+        """\
+[[website]]
+name = "my-app"
+namespace = "default"
+image = "nginx:latest"
+external-secret = "/api-key"
+""",
+    )
+
+    configs = load_test_configs(tmp_path)
+    config = only_config(configs)
+    assert isinstance(config, WebsiteConfig)
+    assert config.external_secrets == ["/api-key"]
+
+
+def test_load_website_config_rejects_both_external_secret_forms(
+    tmp_path: Path,
+) -> None:
+    """The singular and plural external secret fields are mutually exclusive."""
+    write_toml(
+        tmp_path,
+        "config.toml",
+        """\
+[[website]]
+name = "my-app"
+namespace = "default"
+image = "nginx:latest"
+external-secret = "/api-key"
+external-secrets = ["/email-password"]
+""",
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="Cannot specify both 'external-secret' and 'external-secrets'",
+    ):
+        load_test_configs(tmp_path)
+
+
+def test_load_website_config_external_secret_must_be_string(tmp_path: Path) -> None:
+    """The singular external-secret field only accepts a string."""
+    write_toml(
+        tmp_path,
+        "config.toml",
+        """\
+[[website]]
+name = "my-app"
+namespace = "default"
+image = "nginx:latest"
+external-secret = ["/api-key"]
+""",
+    )
+
+    with pytest.raises(ValueError, match="'external-secret' must be a string"):
+        load_test_configs(tmp_path)
+
+
+def test_load_website_config_external_secrets_must_be_strings(tmp_path: Path) -> None:
+    """external-secrets must be a string or list of strings."""
+    write_toml(
+        tmp_path,
+        "config.toml",
+        """\
+[[website]]
+name = "my-app"
+namespace = "default"
+image = "nginx:latest"
+external-secrets = [1]
+""",
+    )
+
+    with pytest.raises(
+        ValueError,
+        match="'external-secrets' must be a string or list of strings",
+    ):
+        load_test_configs(tmp_path)
+
+
 def test_load_website_config_with_custom_token_audiences(tmp_path: Path) -> None:
     """Website config can specify custom audiences for projected tokens."""
     write_toml(
