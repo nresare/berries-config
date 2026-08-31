@@ -16,6 +16,16 @@ metadata:
   name: rook-ceph
   namespace: rook-ceph # namespace:cluster
 spec:
+  security:
+    cephx:
+      allowedCiphers:
+        - aes256k
+      csi:
+        keyGeneration: 2
+      daemon:
+        keyGeneration: 2
+      rbdMirrorPeer:
+        keyGeneration: 2
   cephVersion:
     # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
     # v19 is Squid, v20 is Tentacle
