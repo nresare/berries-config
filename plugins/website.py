@@ -24,6 +24,11 @@ from manifest_builder.k8s import (
 )
 from manifest_builder.output import write_documents
 
+if __package__:
+    from .random_secrets import inject_random_secrets, parse_random_secrets
+else:
+    from random_secrets import inject_random_secrets, parse_random_secrets
+
 
 @dataclass
 class WebsiteConfig:
@@ -46,6 +51,7 @@ class WebsiteConfig:
     custom_token_audiences: list[str] | None = None
     persistence: dict[str, str] | None = None  # mount path -> storage request size
     replicas: int = DEFAULT_REPLICA_COUNT  # number of deployment replicas
+    random_secrets: list[str] | None = None  # keys mounted at /random-secrets
 
 
 def validate_website_config(config: WebsiteConfig) -> None:
@@ -131,6 +137,8 @@ def _parse_website_config(
             "extra-hostnames",
             "external-secret",
             "external-secrets",
+            "random-secret",
+            "random-secrets",
             "custom-token-audiences",
             "persistence",
             "replicas",
@@ -201,6 +209,7 @@ def _parse_website_config(
         config=config_dict,
         extra_hostnames=data.get("extra-hostnames"),
         external_secrets=external_secrets,
+        random_secrets=parse_random_secrets(data, source_file),
         custom_token_audiences=custom_token_audiences,
         persistence=data.get("persistence"),
         replicas=data.get("replicas", DEFAULT_REPLICA_COUNT),
@@ -649,6 +658,11 @@ def generate_website(
     if config.emptydir_path:
         for doc in docs:
             _inject_emptydir_mount(doc, config.emptydir_path)
+
+    if config.random_secrets:
+        inject_random_secrets(
+            docs, config.random_secrets, config.namespace, make_k8s_name(config.name)
+        )
 
     if config.custom_token_audiences:
         for doc in docs:

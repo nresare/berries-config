@@ -27,6 +27,11 @@ from manifest_builder.k8s import (
 )
 from manifest_builder.output import write_documents
 
+if __package__:
+    from .random_secrets import inject_random_secrets, parse_random_secrets
+else:
+    from random_secrets import inject_random_secrets, parse_random_secrets
+
 
 @dataclass
 class SimpleConfig:
@@ -268,7 +273,7 @@ def _parse_simple_config(
 
     external_secrets = _parse_external_secrets(data, source_file)
 
-    random_secrets = _parse_random_secrets(data, source_file)
+    random_secrets = parse_random_secrets(data, source_file)
 
     namespace = data.get("namespace", default_namespace)
     image = data.get("image", default_image)
@@ -337,37 +342,6 @@ def _parse_external_secrets(data: dict, source_file: Path) -> list[str] | None:
     return mount_paths
 
 
-def _parse_random_secrets(data: dict, source_file: Path) -> list[str] | None:
-    """Normalize the 'random-secret'/'random-secrets' fields into a list of names.
-
-    'random-secret' names a single secret key; 'random-secrets' names a list.
-    Specifying both is an error.
-    """
-    random_secret = data.get("random-secret")
-    random_secrets = data.get("random-secrets")
-
-    if random_secret is not None and random_secrets is not None:
-        raise ValueError(
-            f"Cannot specify both 'random-secret' and 'random-secrets' in {source_file}"
-        )
-
-    if random_secret is not None:
-        if not isinstance(random_secret, str):
-            raise ValueError(f"'random-secret' must be a string in {source_file}")
-        return [random_secret]
-
-    if random_secrets is not None:
-        if not isinstance(random_secrets, list) or not all(
-            isinstance(secret, str) for secret in random_secrets
-        ):
-            raise ValueError(
-                f"'random-secrets' must be a list of strings in {source_file}"
-            )
-        return random_secrets
-
-    return None
-
-
 def _inject_configmaps(
     docs: list[dict],
     config: SimpleConfig,
@@ -434,48 +408,6 @@ def _inject_external_secrets(docs: list[dict], config: SimpleConfig) -> None:
             pod_spec.setdefault("volumes", []).append(
                 {"name": secret_name, "secret": {"secretName": secret_name}}
             )
-
-
-RANDOM_SECRETS_MOUNT_PATH = "/random-secrets"
-
-
-def _inject_random_secrets(
-    docs: list[dict],
-    config: SimpleConfig,
-    k8s_name: str,
-) -> None:
-    """Emit a RandomSecret and mount its generated Secret at /random-secrets.
-
-    The randomsecret controller (https://github.com/portswigger/randomsecret)
-    reconciles a RandomSecret into a Secret of the same name in the same
-    namespace, populating one entry per name in ``spec.secrets``.
-    """
-    if not config.random_secrets:
-        return
-
-    docs.append(
-        {
-            "apiVersion": "noa.re/v1alpha1",
-            "kind": "RandomSecret",
-            "metadata": {"name": k8s_name, "namespace": config.namespace},
-            "spec": {"secrets": [{"name": secret} for secret in config.random_secrets]},
-        }
-    )
-
-    for doc in docs:
-        if doc.get("kind") != "Deployment":
-            continue
-
-        pod_spec = (
-            doc.setdefault("spec", {}).setdefault("template", {}).setdefault("spec", {})
-        )
-        for container in pod_spec.get("containers", []):
-            container.setdefault("volumeMounts", []).append(
-                {"name": "random-secrets", "mountPath": RANDOM_SECRETS_MOUNT_PATH}
-            )
-        pod_spec.setdefault("volumes", []).append(
-            {"name": "random-secrets", "secret": {"secretName": k8s_name}}
-        )
 
 
 def generate_simple(
@@ -562,7 +494,7 @@ def generate_simple(
     _inject_external_secrets(docs, config)
 
     if config.random_secrets:
-        _inject_random_secrets(docs, config, k8s_name)
+        inject_random_secrets(docs, config.random_secrets, config.namespace, k8s_name)
 
     if config.custom_token_audiences:
         for doc in docs:
