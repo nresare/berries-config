@@ -12,6 +12,15 @@ The `[[website]]` config block is implemented locally in
 tests alongside it. Manifest-builder discovers the block from the top-level
 `plugins/` directory when this configuration is loaded.
 
+### Random secrets
+
+Both `[[simple]]` and `[[website]]` support `random-secret = "SESSION_KEY"`
+for one key or `random-secrets = ["API_KEY", "SIGNING_KEY"]` for multiple keys.
+The two forms cannot be combined. Each generates a `RandomSecret` resource
+with the application's Kubernetes name and namespace, and mounts the resulting
+Secret at `/random-secrets` in deployment containers. This also works for Hugo
+websites and requires the cluster's randomsecret controller.
+
 ### Hugo website backend TLS
 
 A `[[website]]` entry that uses `hugo-repo` generates a TLS-only backend. The
