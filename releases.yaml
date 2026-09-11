@@ -38,7 +38,7 @@ repositories:
 releases:
   - name: cert-manager
     chart: jetstack/cert-manager
-    version: v1.21.1
+    version: v1.21.2
   - name: trust-manager
     chart: jetstack/trust-manager
     version: v0.25.0
