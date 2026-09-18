@@ -5,5 +5,5 @@ sections = ["base", "berries"]
 
 [[target]]
 name = "fruktsallad"
-sections = ["base"]
+sections = ["base", "fruktsallad"]
 

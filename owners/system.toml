@@ -1,1 +1,1 @@
-owned = ["argo", "cluster"]
+owned = ["argo", "cluster", "rook-ceph"]

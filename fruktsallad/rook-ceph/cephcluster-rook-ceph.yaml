@@ -1,4 +1,4 @@
-# Downloaded from https://raw.githubusercontent.com/rook/rook/refs/heads/release-1.20/deploy/examples/cluster.yaml
+# Downloaded from https://raw.githubusercontent.com/rook/rook/refs/heads/release-1.20/deploy/examples/cluster.yaml
 # Added nodes and drives under storage
 #################################################################################################################
 # Define the settings for the rook-ceph cluster with common settings for a production cluster.
@@ -286,18 +286,8 @@ spec:
     mgr: system-cluster-critical
     #crashcollector: rook-ceph-crashcollector-priority-class
   storage: # cluster level storage configuration and selection
-    useAllNodes: false
-    useAllDevices: false
-    nodes:
-      - name: hallon
-        devices:
-          - name: /dev/nvme0n1p3
-      - name: smultron
-        devices:
-          - name: /dev/nvme0n1p3
-      - name: lingon
-        devices:
-          - name: /dev/nvme0n1p3
+    useAllNodes: true
+    useAllDevices: true
     #deviceFilter:
     config:
       # crushRoot: "custom-root" # specify a non-default root label for the CRUSH map

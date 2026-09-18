@@ -6,7 +6,6 @@ values = "argo/values.yaml"
 [[helm]]
 namespace = "rook-ceph"
 release = "rook"
-extra-resources = "rook-ceph/extra"
 values = "rook-ceph/rook-ceph-values.yaml"
 
 [[helm]]

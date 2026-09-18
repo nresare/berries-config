@@ -1,0 +1,3 @@
+[[copy]]
+namespace = "rook-ceph"
+source = "rook-ceph"
