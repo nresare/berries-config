@@ -3,3 +3,13 @@ namespace = "argo"
 release = "argocd"
 values = "argo/values.yaml"
 
+[[helm]]
+namespace = "rook-ceph"
+release = "rook"
+extra-resources = "rook-ceph/extra"
+values = "rook-ceph/rook-ceph-values.yaml"
+
+[[helm]]
+namespace = "rook-ceph"
+release = "csi-drivers"
+values = "rook-ceph/csi-drivers-values.yaml"

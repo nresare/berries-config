@@ -65,17 +65,6 @@ release = "loki"
 values = "loki/values.yaml"
 
 [[helm]]
-namespace = "rook-ceph"
-release = "rook"
-extra-resources = "rook-ceph/extra"
-values = "rook-ceph/rook-ceph-values.yaml"
-
-[[helm]]
-namespace = "rook-ceph"
-release = "csi-drivers"
-values = "rook-ceph/csi-drivers-values.yaml"
-
-[[helm]]
 namespace = "kube-state-metrics"
 release = "kube-state-metrics"
 extra-resources = "kube-state-metrics/extra"
