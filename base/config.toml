@@ -1,0 +1,5 @@
+[[helm]]
+namespace = "argo"
+release = "argocd"
+values = "argo/values.yaml"
+

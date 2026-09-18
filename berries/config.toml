@@ -1,0 +1,145 @@
+[[helm]]
+namespace = "cert-manager"
+release = "cert-manager"
+values = "cert-manager/values.yaml"
+extra-resources = "cert-manager/extra"
+
+[[helm]]
+namespace = "cert-manager"
+release = "trust-manager"
+
+[[helm]]
+namespace = "surrealdb"
+release = "surrealdb"
+values = "surrealdb/values.yaml"
+
+[[helm]]
+namespace = "teleport-cluster"
+release = "teleport-cluster"
+values = "teleport/cluster-values.yaml"
+extra-resources = "teleport/extra"
+
+[[helm]]
+namespace = "teleport"
+release = "teleport-kube-agent"
+values = "teleport/agent-values.yaml"
+
+[[helm]]
+namespace = "envoy-gateway-system"
+release = "envoy-gateway"
+values = "envoy-gateway/values.yaml"
+extra-resources = "envoy-gateway/extra"
+
+[[helm]]
+namespace = "metrics-server"
+release = "metrics-server"
+
+[[helm]]
+namespace = "grafana"
+release = "grafana-operator"
+extra-resources = "grafana/extra"
+values = "grafana/values.yaml"
+
+[[helm]]
+namespace = "mimir"
+release = "mimir"
+values = "mimir/values.yaml"
+
+[[helm]]
+namespace = "alloy"
+release = "alloy"
+values = "alloy/metrics.yaml"
+config = {"metrics.cfg" = "alloy/metrics.cfg"}
+extra-resources = "alloy/metrics-extra"
+
+[[helm]]
+namespace = "alloy"
+name-override = "alloy-log-forwarder"
+release = "alloy"
+values = "alloy/log-forwarder.yaml"
+config = {"log-forwarder.cfg" = "alloy/log-forwarder.cfg"}
+
+[[helm]]
+namespace = "loki"
+release = "loki"
+values = "loki/values.yaml"
+
+[[helm]]
+namespace = "rook-ceph"
+release = "rook"
+extra-resources = "rook-ceph/extra"
+values = "rook-ceph/rook-ceph-values.yaml"
+
+[[helm]]
+namespace = "rook-ceph"
+release = "csi-drivers"
+values = "rook-ceph/csi-drivers-values.yaml"
+
+[[helm]]
+namespace = "kube-state-metrics"
+release = "kube-state-metrics"
+extra-resources = "kube-state-metrics/extra"
+
+[[helm]]
+namespace = "nats"
+release = "nats"
+values = "nats/values.yaml"
+
+[[simple]]
+name = "nats-aws-auth"
+namespace = "nats"
+replicas = 1
+image = "nresare/nats-aws-auth:local-key-storage"
+external-secret = "/keys"
+args = [
+    "--url=nats://nats.nats",
+    "--auth-backend=k8s-oidc",
+    "--jwt-issuer=https://k8s.noa.re",
+    "--key-storage=directory",
+    "--key-dir=/keys"
+]
+
+[[simple]]
+name = "webhook-poker"
+namespace = "webhook-poker"
+replicas = 1
+image = "public.ecr.aws/portswigger-platform/webhook-poker:0.0.6"
+custom-token-audiences = ["nats"]
+config = { "/config/webhook-poker.toml" = "webhook-poker/webhook-poker.toml" }
+[simple.service-account-annotations]
+"nats.io/allowed-pub-subjects" = "$JS.API.CONSUMER.INFO.github-events.argo-poker,$JS.API.CONSUMER.MSG.NEXT.github-events.argo-poker,$JS.ACK.github-events.argo-poker.>"
+
+[[helm]]
+namespace = "randomsecret"
+release = "randomsecret"
+
+[[helm]]
+namespace = "nats"
+release = "nack"
+values = "nats/nack-values.yaml"
+extra-resources = "nats/extra"
+custom-token-audiences = ["nats"]
+
+[[website]]
+name = "zq.lu"
+namespace = "web"
+hugo-repo = "https://github.com/nresare/zq.lu"
+
+[[website]]
+name = "noa.re"
+namespace = "web"
+hugo-repo = "https://github.com/nresare/noa.re"
+extra-hostnames = "nadia.resare.com"
+
+[[website]]
+name = "relcoord.noa.re"
+namespace = "relcoord"
+replicas = 2
+image = "public.ecr.aws/portswigger-platform/relcoord:0.2.0-83fb2305"
+config = {"/config/relcoord.toml" = "relcoord/relcoord.toml"}
+custom-token-audiences = ["idmouse", "idcat.noa.re"]
+
+[[copy]]
+namespace = "acme-dns"
+source = "acme-dns/manifests"
+config = {"/etc/acme-dns/config.cfg" = "acme-dns/config.cfg"}
