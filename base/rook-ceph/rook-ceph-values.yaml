@@ -21,3 +21,6 @@ resources:
     memory: 512Mi
 
 currentNamespaceOnly: false
+
+toolbox:
+  enabled: true
